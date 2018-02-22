@@ -32,4 +32,26 @@ class Game extends Model
       'approved' => 'boolean',
       'open_signups' => 'boolean',
     ];
+
+    /**
+     * Owner of the game
+     */
+    public function owner() {
+      return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    /**
+     * Players registered to play in the game
+     */
+    public function players() {
+      return $this->belongsToMany(User::class, 'player_id', 'game_id', 'id');
+    }
+
+    public function canView(User $user) {
+      if ($this->owner_id === $user->id) {
+        return true;
+      }
+
+      return false;
+    }
 }

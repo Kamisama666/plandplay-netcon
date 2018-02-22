@@ -33,7 +33,7 @@ class GamesController extends Controller
      */
     public function create()
     {
-        return view('game_form');
+        return view('games.form');
     }
 
     /**
@@ -44,15 +44,26 @@ class GamesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $messages = [
+            'required' => 'El campo :attribute es necesario.',
+            'string' => 'El campo :attribute es necesario.',
+            'max' => 'El campo :attribute no puede ser mas grande que :max caracteres.',
+            'min' => 'El campo :attribute no puede ser menor que :min',
+        ];
+
+        $validationRules = [
             'title' => 'string|max:150|required',
             'description' => 'string|max:500|required',
+            'game_system' => 'string|max:250|required',
+            'platform' => 'string|max:250|required',
             'time_preference' => 'string|max:250|required',
             'duration_hours' => 'integer|min:1|required',
             'sessions_number' => 'integer|min:1|required',
             'maximum_players_number' => 'integer|min:1|required',
             'stream_channel' => 'string:250|nullable',
-        ]);
+        ];
+
+        Validator::make($request->all(), $validationRules, $messages)->validate();
 
         if($request->hasFile('game_image') && $request->file('game_image')->isValid()) {
             $file_name = 'game_image' . uniqid() . '.' . $request->game_image->extension();
@@ -63,6 +74,8 @@ class GamesController extends Controller
 
         $game->title = $request->get('title');
         $game->description = $request->get('description');
+        $game->game_system = $request->get('game_system');
+        $game->platform = $request->get('platform');
         $game->time_preference = $request->get('time_preference');
         $game->duration_hours = $request->get('duration_hours');
         $game->sessions_number = $request->get('sessions_number');
@@ -81,7 +94,7 @@ class GamesController extends Controller
     }
 
     public function success() {
-        return view('game_registered');
+        return view('games.success');
     }
 
     /**
@@ -92,7 +105,18 @@ class GamesController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        $user = auth()->user();
+        if (!$game->canView($user)) {
+            abort(403, 'Invalid User');
+        }
+
+        $isOwner = $game->owner_id === $user->id;
+
+        return view('games.show', [
+            'game'=> $game, 
+            'user' => $user,
+            'isOwner' => $isOwner,
+        ]);
     }
 
     public function showImage($filename) {

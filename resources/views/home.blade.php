@@ -13,8 +13,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <a href="{{route('game_post')}}">¡Registra una partida!</a>
+                    
+                    <br>
 
-                    <a href="{{route('game_post')}}">Registra una partida!</a>
+                    <h3>Partidas registradas: </h3>
+
+                    @if ($user->games()->count())
+                        <ul>
+                        @foreach($user->games as $game)
+                            <li>
+                                <a href="{{route('game_view', $game->id)}}">{{$game->title}}</a> 
+                                ({{$game->approved ? 'Aprovada' : 'Pendiente de aprovar'}})
+                            </li>
+                        @endforeach
+                        </ul>
+                    @endif
 
                 </div>
             </div>

@@ -66,6 +66,8 @@
 
                 <h1>Subir Partida</h1>
 
+                <br>
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -90,13 +92,23 @@
                     {!! Form::textarea('description') !!}
                 </div>
 
+                <div class="form-group">
+                    {!! Form::label('game_system', 'Sistema de Juego', ['class' => 'control-label']) !!}
+                    {!! Form::text('game_system') !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('platform', 'Plataforma de Juego', ['class' => 'control-label']) !!}
+                    {!! Form::text('platform') !!}
+                </div>
+
                 <div class="form-group">    
                     {!! Form::label('game_image', 'Imagen de la partida', ['class' => 'control-label']) !!}
                     {!! Form::file('game_image') !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('time_preference', 'Preferencia de fecha y Horario', ['class' => 'control-label']) !!}
+                    {!! Form::label('time_preference', 'Preferencia de fecha y Hora', ['class' => 'control-label']) !!}
                     {!! Form::text('time_preference') !!}
                 </div>
 

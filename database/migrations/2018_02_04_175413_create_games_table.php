@@ -17,8 +17,8 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->string('title', 150);
             $table->string('description', 500);
-            $table->string('game_system', 250)->nullable();
-            $table->string('platform', 250)->nullable();
+            $table->string('game_system', 250);
+            $table->string('platform', 250);
             $table->string('image_name', 300)->nullable();
             $table->dateTime('starting_time')->nullable();
             $table->integer('duration_hours')->unsigned()->nullable();
