@@ -84,7 +84,7 @@ class GamesController extends Controller
         $game->streamed = $request->has('streamed') && $request->get('streamed') === 'streamed' ? true : false;
         $game->owner_id = auth()->user()->id;
 
-        if ($image_path) {
+        if (isset($image_path)) {
             $game->image_name = $file_name;
         }
 
