@@ -38,7 +38,7 @@
 
                         <p><b>Plataforma de Juego</b>: {{$game->platform}}</p>
 
-                        <p><b>Hora de inicio</b>: {{$game->starting_time ? $game->starting_timetoDateTimeString() : null}}</p>
+                        <p><b>Hora de inicio</b>: {{$game->starting_time ? $game->starting_time->toDateTimeString() : null}}</p>
 
                         <p><b>Numero de Horas de duracion</b>: {{$game->duration_hours}}</p>
 

@@ -1,0 +1,3 @@
+- rename starting_time to start_time (ugh!)
+- Start Time must be shown in user's timezone
+- Display start time timezone
