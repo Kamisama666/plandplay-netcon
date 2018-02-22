@@ -24,7 +24,7 @@
                         @foreach($user->games as $game)
                             <li>
                                 <a href="{{route('game_view', $game->id)}}">{{$game->title}}</a> 
-                                ({{$game->approved ? 'Aprovada' : 'Pendiente de aprovar'}})
+                                ({{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}})
                             </li>
                         @endforeach
                         </ul>
