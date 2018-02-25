@@ -22,11 +22,21 @@
                     <h3>{{$game->title}}</h3>
 
                     <p>
-                    <img 
-                        class="image_game" 
-                        src="{{route('storage_get', $game->image_name)}}" 
-                        alt="{{$game->title}}" 
-                    >
+                    @if ($game->image_name)
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{route('storage_get', $game->image_name)}}" 
+                                                        alt="{{$game->title}}" 
+                                                        
+                                                    >
+                                                @else
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{ asset('img/sin_imagen.png') }}" 
+                                                        alt="{{$game->title}}" 
+                                                        
+                                                    >
+                                                @endif
                     </p>
                     <div class="col-md-8 col-md-offset-2">
                          @if ($isOwner)

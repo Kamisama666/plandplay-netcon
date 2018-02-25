@@ -38,12 +38,21 @@
                                     <tr>
                                          <td width="15%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida">
+                                                @if ($game->image_name)
                                                 <img 
-                                                    class="image_game" 
-                                                    src="{{route('storage_get', $game->image_name)}}" 
-                                                    alt="{{$game->title}}" 
-                                                    width="100%" 
-                                                >
+                                                        class="image_game" 
+                                                        src="{{route('storage_get', $game->image_name)}}" 
+                                                        alt="{{$game->title}}" 
+                                                        width="100%" 
+                                                    >
+                                                @else
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{ asset('img/sin_imagen.png') }}" 
+                                                        alt="{{$game->title}}" 
+                                                        width="100%" 
+                                                    >
+                                                @endif
                                             </a>
                                         </td>    
                                         <td width="45%">
