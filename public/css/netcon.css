@@ -28,6 +28,22 @@ h3 { color: #007bbb; text-transform: uppercase; }
 h4 { padding-top: 15px; font-weight: bold;}
 div.panel-default{padding: 10px; border:0;}
 table.listado tr{font-size: 95%}
+#game_view img.image_game{
+	border: solid 1px #ccc;
+	padding: 7px;
+	box-shadow: 0px 0px 5px #ccc;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+}
+
+tr img.image_game{
+	border: solid 1px #ccc;
+	padding: 2px;
+	margin: 2px;
+	box-shadow: 0px 0px 5px #ccc;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+}
 
 
 

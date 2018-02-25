@@ -13,6 +13,7 @@
                 <div class="panel-heading"><a href="{{route('home')}}">< Volver a mis partidas</a> | <a href="http://netcon.viruk.com/contacto" target="_blank">Contacto</a></div>
 
                 <div id="game_view" class="panel-body" >
+
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -21,23 +22,24 @@
 
                     <h3>{{$game->title}}</h3>
 
-                    <p>
+                    <p style="padding: 15px; ">
                     @if ($game->image_name)
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{route('storage_get', $game->image_name)}}" 
-                                                        alt="{{$game->title}}" 
-                                                        
-                                                    >
-                                                @else
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{ asset('img/sin_imagen.png') }}" 
-                                                        alt="{{$game->title}}" 
-                                                        
-                                                    >
-                                                @endif
+                        <img 
+                                class="image_game" 
+                                src="{{route('storage_get', $game->image_name)}}" 
+                                alt="{{$game->title}}" 
+                                
+                            >
+                    @else
+                        <img 
+                                class="image_game" 
+                                src="{{ asset('img/sin_imagen.png') }}" 
+                                alt="{{$game->title}}" 
+                                
+                            >
+                    @endif
                     </p>
+
                     <div class="col-md-8 col-md-offset-2">
                          @if ($isOwner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
