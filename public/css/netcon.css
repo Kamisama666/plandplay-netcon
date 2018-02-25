@@ -1,0 +1,64 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i');
+
+/*Reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	font-family: 'Montserrat', sans-serif;
+}
+
+body{background-color: #fff;}
+
+/*NETCONCSS*/
+
+/*General*/
+h1 { color: #007bbb; text-transform: uppercase; }
+h3 { color: #007bbb; text-transform: uppercase; }
+h4 { padding-top: 15px; font-weight: bold;}
+div.panel-default{padding: 10px; border:0;}
+table.listado tr{font-size: 95%}
+
+
+
+/*Navbar*/
+nav.navbar{	background-color: #007bbb;}
+nav.navbar a.navbar-brand{
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+nav.navbar a.dropdown-toggle{
+	color: #fff;
+}
+
+/*Login*/
+#panel-login{padding: 10px; border:0;}
+#panel-login img {max-width: 250px;}
+#panel-login h3, #panel-login p { text-align: center; padding-bottom: 20px; margin-bottom: 0px; }
+
+/*Formulario*/
+
+
+#sube-partida small{font-style: italic; margin-bottom: 5px; display: block;}
+
+.control-label {
+	display:block;
+	color: #007bbb;
+
+}
+
+@media (max-width: 767px){
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a{color: #fff}
+}
+

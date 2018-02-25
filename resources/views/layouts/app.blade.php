@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/netcon.css') }}" rel="stylesheet">
+
     @yield('style')
 </head>
 <body>
@@ -37,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                         
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -52,10 +54,19 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{route('home')}}">Mis partidas </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('game_post')}}">Nueva partida </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://netcon.viruk.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

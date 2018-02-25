@@ -3,19 +3,27 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-defaultl" id="panel-login">
+                <div class="panel-heading">
+                    <h3>BIENVENIDX A NETCONPlay</h3>
+                     <p>
+                        <img src="{{ asset('img/logo-netconplay.png') }}">
+                    </p>
+                </div>
                 <div class="panel-body">
+                     <p>
+                        Bienvenid@ a NETCONPlay, la <strong>plataforma de gestión de partidas de las <a href="http://netcon.viruk.com" title="Visitar netcon.viruk.vom" target="_blank">NETCON18</a>.</strong> Para registrar tus partidas o acceder a las que ya has subido solo tienes que loguearte con tu cuenta de Google.
+                    </p>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ url('/auth/google') }}" class="btn btn-google"><i class="fa fa-github"></i> Google</a>
-                            </div>
-                        </div>
+                        <p>
+                                <a href="{{ url('/auth/google') }}" class="btn btn-danger">
+                                    Login con Google
+                                </a>
+                           
+                        </p>
                     </form>
                 </div>
             </div>

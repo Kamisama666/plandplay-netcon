@@ -2,146 +2,123 @@
 
 @section('content')
 
-<style type="text/css">
 
-.account-box
-
-{
-
-    border: 2px solid rgba(153, 153, 153, 0.75);
-
-    border-radius: 2px;
-
-    -moz-border-radius: 2px;
-
-    -webkit-border-radius: 2px;
-
-    -khtml-border-radius: 2px;
-
-    -o-border-radius: 2px;
-
-    z-index: 3;
-
-    font-size: 13px !important;
-
-    font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
-
-    background-color: #ffffff;
-
-    padding: 20px;
-
-}
-
-.logo
-
-{
-
-    background-position: 0 -4px;
-
-    margin: -5px 0 17px 80px;
-
-    position: relative;
-
-    text-align: center;
-
-    width: 138px;
-
-}
-
-</style>
 
 <div class="container">
 
     <div class="row">
 
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-8 col-md-offset-2">
 
-            <div class="account-box">
+              <div class="panel panel-default">
+                <div class="panel-heading"><h1>Subir partida</h1></div>
 
-                <div class="logo">
+                <div class="panel-body">
 
-                    <img src="http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png" width="80px" alt=""/>
+                    <p><a href="{{route('home')}}">< Volver a mis partidas</a></p>
 
-                </div>
+                    <div id="sube-partida" class="account-box">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                <h1>Subir Partida</h1>
+                        <!-- form -->
 
-                <br>
+                        {!! Form::open(['url' => route('game_store'), 'files' => true]) !!}
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                        <div class="form-group">
+                            {!! Form::label('title', 'Título', ['class' => 'control-label']) !!}
+                            <small id="title" class="form-text text-muted">
+                                Nombre de la partida
+                            </small>
+                            {!! Form::text('title','',['class' => 'form-control']) !!}
+                        </div>
+            
+                        <div class="form-group">
+                            {!! Form::label('description', 'Descripcion', ['class' => 'control-label']) !!}
+                            <small id="description" class="form-text text-muted">
+                                Información para la partida que pueda interesar a los posibles participantes en la partida: argumento, ambientación, peculiaridades,... Si vas a utilizar un sistema distinto del original del juego aquí es un buen sitio para advertirlo.
+                            </small>
+                            {!! Form::textarea('description','',['class' => 'form-control','placeholder'=>'Escribe hasta 2000 caracteres']) !!}
+
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('game_system', 'Sistema de Juego', ['class' => 'control-label']) !!}
+                            {!! Form::text('game_system','',['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('platform', 'Plataforma de Juego', ['class' => 'control-label']) !!}
+                             <small id="platform" class="form-text text-muted">
+                                Informa a tus jugadoras que plataforma usareis para comunicaros durante la partida Fantasy Grounds, Roll20, Hangout, Skype, Discord, Telegram, Radiotelegrafo de Hilos, Telepatia Arcana,... 
+                            </small>
+                            {!! Form::text('platform','',['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">    
+                            {!! Form::label('game_image', 'Imagen de la partida', ['class' => 'control-label']) !!}
+                            {!! Form::file('game_image') !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('time_preference', 'Preferencia de fecha y Hora', ['class' => 'control-label']) !!}
+                             <small id="time_preference" class="form-text text-muted">
+                               Preferencias y/o disponibilidad para la partida, por ej.: sabado a las 17:00, cualquier noche o a partir del viernes, esto nos servirá para ubicar tu partida en la parrilla de juego. Recuerda que las jornadas duran del 28 de Marzo al 1 de Abril.
+                            </small>
+                            {!! Form::text('time_preference','',['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('duration_hours', 'Número de Horas de duracion', ['class' => 'control-label']) !!}
+                             <small id="platform" class="form-text text-muted">
+                               Duración aproximada de la sesión en horas 
+                            </small>
+                            {!! Form::number('duration_hours', 1,['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('sessions_number', 'Numero de Sesiones', ['class' => 'control-label']) !!}
+                            <small id="sessions_number" class="form-text text-muted">
+                               Numero de sesiones de la partida, en la mayoría de los casos sera 1
+                            </small>
+                            {!! Form::number('sessions_number', 1,['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('maximum_players_number', 'Número Maximo de Jugadores', ['class' => 'control-label']) !!}
+                            {!! Form::number('maximum_players_number', 1,['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('streamed', '¿Se emitirá la partida?', ['class' => 'control-label']) !!}
+
+                            {!! Form::checkbox('streamed', 'streamed') !!}
+                        </div>
+
+                        <div class="form-group">    
+                            {!! Form::label('stream_channel', 'Canal de Emision', ['class' => 'control-label']) !!}
+                            <small id="stream_channel" class="form-text text-muted">
+                               Si va a ser emitida indicanos la url del canal de emisión
+                            </small>
+                            {!! Form::text('stream_channel','',['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                        {!! Form::submit('Enviar partida',['class' => 'btn btn-primary']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
                     </div>
-                @endif
 
-                <!-- form -->
-
-                {!! Form::open(['url' => route('game_store'), 'files' => true]) !!}
-
-                <div class="form-group">
-                    {!! Form::label('title', 'Titulo', ['class' => 'control-label']) !!}
-                    {!! Form::text('title') !!}
                 </div>
-    
-                <div class="form-group">
-                    {!! Form::label('description', 'Descripcion', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('description') !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('game_system', 'Sistema de Juego', ['class' => 'control-label']) !!}
-                    {!! Form::text('game_system') !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('platform', 'Plataforma de Juego', ['class' => 'control-label']) !!}
-                    {!! Form::text('platform') !!}
-                </div>
-
-                <div class="form-group">    
-                    {!! Form::label('game_image', 'Imagen de la partida', ['class' => 'control-label']) !!}
-                    {!! Form::file('game_image') !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('time_preference', 'Preferencia de fecha y Hora', ['class' => 'control-label']) !!}
-                    {!! Form::text('time_preference') !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('duration_hours', 'Numero de Horas de duracion', ['class' => 'control-label']) !!}
-                    {!! Form::number('duration_hours', 1) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('sessions_number', 'Numero de Sesiones', ['class' => 'control-label']) !!}
-                    {!! Form::number('sessions_number', 1) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('maximum_players_number', 'Numero Maximo de Jugadores', ['class' => 'control-label']) !!}
-                    {!! Form::number('maximum_players_number', 1) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('streamed', 'Sera emitida?', ['class' => 'control-label']) !!}
-                    {!! Form::checkbox('streamed', 'streamed') !!}
-                </div>
-
-                <div class="form-group">    
-                    {!! Form::label('stream_channel', 'Canal de Emision', ['class' => 'control-label']) !!}
-                    {!! Form::text('stream_channel') !!}
-                </div>
-
-                <div class="form-group">
-                {!! Form::submit('Enviar partida') !!}
-                </div>
-
-                {!! Form::close() !!}
 
             </div>
 

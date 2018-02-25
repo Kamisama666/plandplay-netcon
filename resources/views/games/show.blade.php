@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Partidas</div>
+                <div class="panel-heading"><a href="{{route('home')}}">< Volver a mis partidas</a> | <a href="http://netcon.viruk.com/contacto" target="_blank">Contacto</a></div>
 
                 <div id="game_view" class="panel-body" >
                     @if (session('status'))
@@ -21,35 +21,35 @@
 
                     <h3>{{$game->title}}</h3>
 
+                    <p>
                     <img 
                         class="image_game" 
                         src="{{route('storage_get', $game->image_name)}}" 
                         alt="{{$game->title}}" 
                     >
-                    <br>
-
+                    </p>
                     <div class="col-md-8 col-md-offset-2">
                          @if ($isOwner)
-                            <p><b>Status</b>: {{$game->approved ? 'Aprovada' : 'Pendiente de aprovar'}}</p>
+                            <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
                         <p>{{$game->description}}</p>
 
-                        <p><b>Sistema de Juego</b>: {{$game->game_system}}</p>
+                        <p><strong>Sistema de Juego</strong>: {{$game->game_system}}</p>
 
-                        <p><b>Plataforma de Juego</b>: {{$game->platform}}</p>
+                        <p><strong>Plataforma de Juego</strong>: {{$game->platform}}</p>
 
-                        <p><b>Hora de inicio</b>: {{$game->starting_time ? $game->starting_time->toDateTimeString() : null}}</p>
+                        <p><strong>Hora de inicio</strong>: {{$game->starting_time ? $game->starting_time->toDateTimeString() : null}}</p>
 
-                        <p><b>Numero de Horas de duracion</b>: {{$game->duration_hours}}</p>
+                        <p><strong>Numero de Horas de duracion</strong>: {{$game->duration_hours}}</p>
 
-                        <p><b>Numero de Sesiones</b>: {{$game->sessions_number}}</p>
+                        <p><strong>Numero de Sesiones</strong>: {{$game->sessions_number}}</p>
 
-                        <p><b>Numero Maximo de Jugadores</b>: {{$game->maximum_players_number}}</p>
+                        <p><strong>Numero Maximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
                         
-                        <p><b>Emitida</b>: {{$game->streamed ? 'Si' : 'No'}}</p>
+                        <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
 
                         @if ($game->stream_channel)
-                        <p><b>Canal de Emision</b>: {{$game->stream_channel}}</p>
+                        <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
                         @endif
                     </div>
                 </div>

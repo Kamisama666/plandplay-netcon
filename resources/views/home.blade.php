@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Inicio</div>
+                <div class="panel-heading"><h1>Mis partidas</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -13,22 +13,56 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{route('game_post')}}">¡Registra una partida!</a>
+                    <p style="text-align: center;">
+                        <a class="btn btn-primary" href="{{route('game_post')}}">¡SUBE UNA NUEVA PARTIDA!</a>
+                    </p>
+                    <p style="text-align: center;">
+                    Si tienes cualquier duda o comentario ponte en <a href="http://netcon.viruk.com/contacto" target="_blank"> contacto con nosotros</a>
+                    </p>
+
+                    <h3>Partidas subidas: </h4>
                     
-                    <br>
+                     @if ($user->games()->count())
 
-                    <h3>Partidas registradas: </h3>
+                        <table class="table table-hover table-condensed  listado">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Juego</th>
+                                    <th>Estado</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($user->games as $game)
+                                    <tr>
+                                         <td width="15%">
+                                            <a href="{{route('game_view', $game->id)}}" title="Ver partida">
+                                                <img 
+                                                    class="image_game" 
+                                                    src="{{route('storage_get', $game->image_name)}}" 
+                                                    alt="{{$game->title}}" 
+                                                    width="100%" 
+                                                >
+                                            </a>
+                                        </td>    
+                                        <td width="45%">
+                                            <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
+                                        </td>
+                                        <td width="25%">
+                                            {{$game->game_system}}
+                                        </td>
+                                        <td width="15%">
+                                            {{$game->approved ? 'Aprobada' : 'Pendiente'}}
+                                        </td>
+                                    </tr>   
+                                @endforeach
+                            </tbody>
+                        </table>
 
-                    @if ($user->games()->count())
-                        <ul>
-                        @foreach($user->games as $game)
-                            <li>
-                                <a href="{{route('game_view', $game->id)}}">{{$game->title}}</a> 
-                                ({{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}})
-                            </li>
-                        @endforeach
-                        </ul>
                     @endif
+
+                   
 
                 </div>
             </div>
