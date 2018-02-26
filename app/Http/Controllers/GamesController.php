@@ -53,7 +53,7 @@ class GamesController extends Controller
 
         $validationRules = [
             'title' => 'string|max:150|required',
-            'description' => 'string|max:500|required',
+            'description' => 'string|max:5000|required',
             'game_system' => 'string|max:250|required',
             'platform' => 'string|max:250|required',
             'time_preference' => 'string|max:250|required',
