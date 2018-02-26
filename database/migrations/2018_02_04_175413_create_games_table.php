@@ -28,6 +28,7 @@ class CreateGamesTable extends Migration
             $table->string('time_preference', 250)->nullable();
             $table->boolean('streamed')->default(false);
             $table->string('stream_channel', 250)->nullable();
+            $table->boolean('beginner_friendly')->default(false);
             $table->boolean('approved')->default(false);
             $table->boolean('open_signups')->default(false);
             $table->integer('owner_id')->unsigned();

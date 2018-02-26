@@ -60,6 +60,8 @@
                         
                         <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
 
+                        <p><strong>Partida de iniciación</strong>: {{$game->beginner_friendly ? 'Si' : 'No'}}</p>
+
                         @if ($game->stream_channel)
                         <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
                         @endif

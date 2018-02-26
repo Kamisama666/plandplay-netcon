@@ -82,6 +82,7 @@ class GamesController extends Controller
         $game->maximum_players_number = $request->get('maximum_players_number');
         $game->stream_channel = $request->get('stream_channel');
         $game->streamed = $request->has('streamed') && $request->get('streamed') === 'streamed' ? true : false;
+        $game->beginner_friendly = $request->has('beginner_friendly') && $request->get('beginner_friendly') === 'beginner_friendly' ? true : false;
         $game->owner_id = auth()->user()->id;
 
         if (isset($image_path)) {

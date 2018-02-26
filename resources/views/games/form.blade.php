@@ -101,6 +101,11 @@
                             Si {!! Form::checkbox('streamed', 'streamed') !!}
                         </div>
 
+                        <div class="form-group">
+                            {!! Form::label('beginner_friendly', '¿Partida de iniciación?', ['class' => 'control-label']) !!}
+                            Si {!! Form::checkbox('beginner_friendly', 'beginner_friendly') !!}
+                        </div>
+
                         <div class="form-group">    
                             {!! Form::label('stream_channel', 'Canal de Emision', ['class' => 'control-label']) !!}
                             <small id="stream_channel" class="form-text text-muted">
