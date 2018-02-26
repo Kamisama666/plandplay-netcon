@@ -50,7 +50,14 @@
 
                         <p><strong>Plataforma de Juego</strong>: {{$game->platform}}</p>
 
-                        <p><strong>Hora de inicio</strong>: {{$game->starting_time ? $game->starting_time->toDateTimeString() : null}}</p>
+                        <p>{{$user_timezone}}</p>
+
+                        <p><strong>Hora de inicio</strong>: 
+                            {{
+                                $game->starting_time ? 
+                                $game->starting_time->setTimezone($user_timezone)->toDateTimeString() : null
+                            }}
+                        </p>
 
                         <p><strong>Numero de Horas de duracion</strong>: {{$game->duration_hours}}</p>
 

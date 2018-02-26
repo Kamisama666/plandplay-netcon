@@ -11,5 +11,6 @@ return [
     'sessions_number' => 'Numero de Sesiones',
     'maximum_players_number' => 'Numero Maximo de Jugadores',
     'stream_channel' => 'Canal de Emision',
+    'timezone' => 'Zona Horaria',
   ],
 ];

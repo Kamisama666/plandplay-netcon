@@ -113,10 +113,13 @@ class GamesController extends Controller
 
         $isOwner = $game->owner_id === $user->id;
 
+        $user_timezone = config('app.timezone');
+
         return view('games.show', [
             'game'=> $game, 
             'user' => $user,
             'isOwner' => $isOwner,
+            'user_timezone' => $user_timezone
         ]);
     }
 

@@ -64,6 +64,11 @@ class LoginController extends Controller
 
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
+
+        if (!$authUser->registration_complete) {
+            return redirect()->route('post_login_post');
+        }
+
         return redirect($this->redirectTo);
     }
 
