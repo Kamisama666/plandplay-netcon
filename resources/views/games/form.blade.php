@@ -70,7 +70,7 @@
                         <div class="form-group">
                             {!! Form::label('time_preference', 'Preferencia de fecha y Hora', ['class' => 'control-label']) !!}
                              <small id="time_preference" class="form-text text-muted">
-                               Preferencias y/o disponibilidad para la partida junto con la zona horaria a la que te refieres, por ej.: sabado a las 17:00 GMT+1, cualquier noche o a partir del viernes, esto nos servirá para ubicar tu partida en la parrilla de juego. Recuerda que las jornadas duran del 28 de Marzo al 1 de Abril.
+                               Preferencias y/o disponibilidad para la partida junto con la zona horaria a la que te refieres, por ej.: sabado a las 17:00 GMT+1, cualquier noche o a partir del viernes. Esto nos servirá para ubicar tu partida en la parrilla de juego. Recuerda que las jornadas duran del 28 de Marzo al 1 de Abril.
                             </small>
                             {!! Form::text('time_preference','',['class' => 'form-control']) !!}
                         </div>
