@@ -45,7 +45,7 @@
                             <small id="description" class="form-text text-muted">
                                 Información para la partida que pueda interesar a los posibles participantes en la partida: argumento, ambientación, peculiaridades,... Si vas a utilizar un sistema distinto del original del juego aquí es un buen sitio para advertirlo.
                             </small>
-                            {!! Form::textarea('description','',['class' => 'form-control','placeholder'=>'Escribe hasta 500 caracteres']) !!}
+                            {!! Form::textarea('description','',['class' => 'form-control','placeholder'=>'Escribe hasta 5000 caracteres']) !!}
 
                         </div>
 
