@@ -60,6 +60,10 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
+        if (env('DISABLE_LOGIN', false)) {
+            abort(403, 'Unauthorised Access');
+        }
+
         $user = Socialite::driver($provider)->user();
 
         $authUser = $this->findOrCreateUser($user, $provider);
