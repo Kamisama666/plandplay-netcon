@@ -51,8 +51,6 @@
 
                         <p><strong>Plataforma de Juego</strong>: {{$game->platform}}</p>
 
-                        <p>{{$user_timezone}}</p>
-
                         <p><strong>Hora de inicio</strong>: 
                             {{
                                 $game->starting_time ? 
