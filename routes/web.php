@@ -28,7 +28,8 @@ Route::middleware(['auth', 'completed_registration', 'timezoned'])->group(functi
   Route::get('/games/new', 'GamesController@create')->name('game_post');
   Route::post('/games', 'GamesController@store')->name('game_store');
   Route::get('/games/success', 'GamesController@success')->name('game_success');
-  Route::get('/games/{game}', 'GamesController@show')->name('game_view');
-
-  Route::get('storage/{filename}', 'GamesController@showImage')->name('storage_get');
 });
+
+Route::get('/games/{game}', 'GamesController@show')->name('game_view');
+Route::get('/games/{game}/register', 'GamesController@register')->name('game_register');
+Route::get('storage/{filename}', 'GamesController@showImage')->name('storage_get');

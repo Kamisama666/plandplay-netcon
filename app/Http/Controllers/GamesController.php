@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -107,19 +108,25 @@ class GamesController extends Controller
     public function show(Game $game)
     {
         $user = auth()->user();
-        if (!$game->canView($user)) {
-            abort(403, 'Invalid User');
-        }
 
-        $isOwner = $game->owner_id === $user->id;
+        $is_owner = $game->isOwner($user);
 
         $user_timezone = config('app.timezone');
+
+        $registration_open = env('GAME_REGISTRATION_ENABLED', false);
+
+        $is_full = $game->isFull();
+
+        $is_registered = $game->isRegistered($user);
 
         return view('games.show', [
             'game'=> $game, 
             'user' => $user,
-            'isOwner' => $isOwner,
-            'user_timezone' => $user_timezone
+            'is_owner' => $is_owner,
+            'user_timezone' => $user_timezone,
+            'registration_open' => $registration_open,
+            'is_full' => $is_full,
+            'is_registered' => $is_registered,
         ]);
     }
 
@@ -136,37 +143,19 @@ class GamesController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Game  $game
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Game $game)
-    {
-        //
-    }
+    public function register(Game $game) {
+        $user = auth()->user();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Game  $game
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Game $game)
-    {
-        //
-    }
+        if (!$game->canRegister($user)) {
+            abort(403, 'No puedes registrarte en este juego');
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Game  $game
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Game $game)
-    {
-        //
+        DB::transaction(function () use ($game, $user) {
+            $game->signedup_players_number = $game->signedup_players_number + 1;
+            $game->save();
+            $game->players()->attach($user->id);
+        });
+
+        return redirect()->route('game_view', ['game' => $game]);
     }
 }
