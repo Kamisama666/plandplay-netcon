@@ -44,14 +44,46 @@ class Game extends Model
      * Players registered to play in the game
      */
     public function players() {
-      return $this->belongsToMany(User::class, 'player_id', 'game_id', 'id');
+      return $this->belongsToMany(User::class, 'game_player', 'game_id', 'player_id');
     }
 
-    public function canView(User $user) {
-      if ($this->owner_id === $user->id) {
-        return true;
+    public function isOwner(User $user = null) {
+      if (!$user) {
+        return false;
       }
 
-      return false;
+      return $this->owner_id === $user->id;
+    }
+
+    public function isFull() {
+      return (bool) $this->maximum_players_number <= $this->signedup_players_number;
+    }
+
+    public function isRegistered(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      return $this->players()->where('users.id', $user->id)->first() ? true : false;
+    }
+
+    public function canRegister(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      if ($this->isFull()) {
+        return false;
+      }
+
+      if ($this->isRegistered($user)) {
+        return false;
+      }
+
+      if ($this->isOwner($user)) {
+        return false;
+      }
+
+      return true;
     }
 }

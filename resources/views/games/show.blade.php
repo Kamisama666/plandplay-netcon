@@ -10,7 +10,15 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="{{route('home')}}">< Volver a mis partidas</a> | <a href="http://netcon.viruk.com/contacto" target="_blank">Contacto</a></div>
+                <div class="panel-heading">
+                    @if ($user)
+                        <a href="{{route('home')}}">Volver a mis partidas</a> | 
+                    @else
+                        <a href="/login">Login</a> | 
+                    @endif
+
+                    <a href="http://netcon.viruk.com/contacto" target="_blank">Contacto</a>
+                </div>
 
                 <div id="game_view" class="panel-body" >
 
@@ -20,7 +28,7 @@
                         </div>
                     @endif
 
-                    <h3>{{$game->title}}</h3>
+                    <h3>{{$game->title}} {{ $is_full ? '(Completo)' : null }}</h3>
 
                     <p style="padding: 15px; ">
                     @if ($game->image_name)
@@ -41,8 +49,8 @@
                     </p>
 
                     <div class="col-md-8 col-md-offset-2">
-                        <p><strong>Organizador</strong>: {{$user->name}}</p>                        
-                        @if ($isOwner)
+                        <p><strong>Organizador</strong>: {{$game->owner->name}}</p>                        
+                        @if ($is_owner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
                         <p>{{$game->description}}</p>
@@ -54,15 +62,16 @@
                         <p><strong>Hora de inicio</strong>: 
                             {{
                                 $game->starting_time ? 
-                                $game->starting_time->setTimezone($user_timezone)->toDateTimeString() : null
+                                $user_timezone ?
+                                $game->starting_time->setTimezone($user_timezone)->toDateTimeString() : 
+                                $game->starting_time->toDateTimeString()
+                                : null
                             }}
                         </p>
 
                         <p><strong>Numero de Horas de duracion</strong>: {{$game->duration_hours}}</p>
 
                         <p><strong>Numero de Sesiones</strong>: {{$game->sessions_number}}</p>
-
-                        <p><strong>Numero Maximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
                         
                         <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
 
@@ -70,6 +79,27 @@
 
                         @if ($game->stream_channel)
                         <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
+                        @endif
+
+                        <p><strong>Numero Maximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
+
+                        @if ($user && $registration_open)
+                        
+                            <p>
+                                <strong>Numero de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
+                            </p>
+
+                            @if (!$is_owner && !$is_registered && !$is_full)
+                                <a href="{{route('game_register', ['game' => $game])}}" type="button" class="btn btn-primary center-block" role="button">Registrarse</a>
+                            @endif
+
+                            @if ($is_registered)
+                                <h3 class="text-center">
+                                    <strong>
+                                    ¡Estas registrad@!
+                                    </strong>
+                                </h3>
+                            @endif
                         @endif
                     </div>
                 </div>
