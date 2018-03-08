@@ -41,7 +41,8 @@
                     </p>
 
                     <div class="col-md-8 col-md-offset-2">
-                         @if ($isOwner)
+                        <p><strong>Organizador</strong>: {{$user->name}}</p>                        
+                        @if ($isOwner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
                         <p>{{$game->description}}</p>
