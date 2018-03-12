@@ -24,7 +24,27 @@ class GamesController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+
+        return view('games.list', [
+            'user' => $user
+        ]);
+    }
+
+    public function indexAjax()
+    {
+        return [
+            'data' => Game::where('approved', true)
+                ->get([
+                    'id',
+                    'title',
+                    'game_system',
+                    'image_name',
+                    'maximum_players_number',
+                    'signedup_players_number',
+                    'starting_time',
+                ])->toArray()
+        ];
     }
 
     /**
