@@ -30,6 +30,8 @@ Route::middleware(['auth', 'completed_registration', 'timezoned'])->group(functi
   Route::get('/games/success', 'GamesController@success')->name('game_success');
 });
 
+Route::get('/games', 'GamesController@index')->name('game_list');
+Route::get('/games/ajax', 'GamesController@indexAjax')->name('game_ajax');
 Route::get('/games/{game}', 'GamesController@show')->name('game_view');
 Route::get('/games/{game}/register', 'GamesController@register')->name('game_register');
-Route::get('storage/{filename}', 'GamesController@showImage')->name('storage_get');
+Route::get('/storage/{filename}', 'GamesController@showImage')->name('storage_get');
