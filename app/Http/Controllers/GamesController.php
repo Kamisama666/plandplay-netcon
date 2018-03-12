@@ -33,6 +33,10 @@ class GamesController extends Controller
      */
     public function create()
     {
+        if (!env('GAME_SIGNUP_ENABLED', 'false')) {
+            return redirect()->route('home');
+        }
+        
         return view('games.form');
     }
 
