@@ -18,4 +18,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+#Force www
+RewriteCond %{HTTP_HOST} ^netconplay\.com [NC]
+RewriteRule ^(.*)$ http://www.netconplay.com/$1 [L,R=301,NC]
 </IfModule>
