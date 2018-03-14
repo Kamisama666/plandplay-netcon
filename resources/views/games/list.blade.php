@@ -11,7 +11,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Partidas</h1></div>
 
@@ -25,17 +25,36 @@
                     Si tienes cualquier duda o comentario ponte en <a href="http://netcon.viruk.com/contacto" target="_blank"> contacto con nosotros</a>
                     </p>
 
-                    <table id="games-table" class="table table-hover table-condensed listado">
+                    <a href="{{route('game_list') . '?date=2018-03-28'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Miercoles</a>
+                    <a href="{{route('game_list') . '?date=2018-03-29'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Jueves</a>
+                    <a href="{{route('game_list') . '?date=2018-03-30'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Viernes</a>
+                    <a href="{{route('game_list') . '?date=2018-03-31'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Sabado</a>
+                    <a href="{{route('game_list') . '?date=2018-04-01'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Domingo</a>
+
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Titulo</th>
-                                <th>Juego</th>
-                                <th>Estado</th>
-                                <th>Hora de inicio</th>  
+                               <th>Titulo</th>
+                               <th>Juego</th>
+                               <th>Estado</th>
+                               <th>Hora de Inicio</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($games as $game)
+                                <tr>
+                                    <td>
+                                        <a href="{{route('game_view', ['game' => $game])}}">{{$game->title}}</a>
+                                    </td>
+                                    <td>{{$game->game_system}}</td>
+                                    <td>{{$game->maximum_players_number <= $game->signedup_players_number ? 'Lleno' : 'Disponible'}}</td>
+                                    <td>{{$game->starting_time}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
+
+                    {{ $games->appends(request()->except('page'))->links() }}
 
                 </div>
             </div>

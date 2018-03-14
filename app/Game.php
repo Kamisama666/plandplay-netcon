@@ -86,4 +86,8 @@ class Game extends Model
 
       return true;
     }
+
+    public function getStatusAttribute() {
+      return $this->maximum_players_number <= $this->signedup_players_number ? 'Lleno' : 'Disponible';
+    }
 }

@@ -46,6 +46,21 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Menu <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{route('game_list')}}">Lista de Partidas </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/login') }}">
+                                            Login
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -57,11 +72,19 @@
                                         <a href="{{route('home')}}">Mis partidas </a>
                                     </li>
                                     <li>
+                                        <a href="{{route('game_list')}}">Lista de Partidas </a>
+                                    </li>
+
+                                    @if (env('GAME_REGISTRATION_ENABLED', false))
+                                    <li>
                                         <a href="{{route('game_post')}}">Nueva partida </a>
                                     </li>
+                                    @endif
+
                                     <li>
                                         <a href="http://netcon.viruk.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
                                     </li>
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
