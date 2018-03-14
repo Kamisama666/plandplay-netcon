@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
@@ -22,29 +23,22 @@ class GamesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
 
-        return view('games.list', [
-            'user' => $user
-        ]);
-    }
+        $query = Game::query();
 
-    public function indexAjax()
-    {
-        return [
-            'data' => Game::where('approved', true)
-                ->get([
-                    'id',
-                    'title',
-                    'game_system',
-                    'image_name',
-                    'maximum_players_number',
-                    'signedup_players_number',
-                    'starting_time',
-                ])->toArray()
-        ];
+        if ($request->has('date')) {
+            $query->whereDate('starting_time', new Carbon($request->get('date')));
+        }
+
+        $games = $query->paginate(10);
+
+        return view('games.list', [
+            'user' => $user,
+            'games' => $games,
+        ]);
     }
 
     /**

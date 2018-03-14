@@ -13,9 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    @if (env('GAME_REGISTRATION_ENABLED', false))
                     <p style="text-align: center;">
                         <a class="btn btn-primary" href="{{route('game_post')}}">¡SUBE UNA NUEVA PARTIDA!</a>
                     </p>
+                    @endif
+                    
                     <p style="text-align: center;">
                     Si tienes cualquier duda o comentario ponte en <a href="http://netcon.viruk.com/contacto" target="_blank"> contacto con nosotros</a>
                     </p>
