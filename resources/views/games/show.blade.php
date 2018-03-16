@@ -83,13 +83,13 @@
 
                         <p><strong>Numero Maximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
 
-                        @if ($user && $registration_open)
-                        
-                            <p>
-                                <strong>Numero de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
-                            </p>
+                        <p>
+                            <strong>Numero de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
+                        </p>
 
-                            @if (!$is_owner && !$is_registered && !$is_full)
+                        @if ($user && $registration_open)
+
+                            @if (!$is_owner && !$is_registered && !$is_full && !$is_partial)
                                 <a href="{{route('game_register', ['game' => $game])}}" type="button" class="btn btn-primary center-block" role="button">Registrarse</a>
                             @endif
 
