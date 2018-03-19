@@ -55,6 +55,9 @@
                                         <a href="{{route('game_list')}}">Lista de Partidas </a>
                                     </li>
                                     <li>
+                                        <a href="http://www.viruk.com/netconcal/">Calendario de Partidas </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('/login') }}">
                                             Login
                                         </a>
@@ -73,6 +76,9 @@
                                     </li>
                                     <li>
                                         <a href="{{route('game_list')}}">Lista de Partidas </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.viruk.com/netconcal/">Calendario de Partidas </a>
                                     </li>
 
                                     @if (env('GAME_REGISTRATION_ENABLED', false))
