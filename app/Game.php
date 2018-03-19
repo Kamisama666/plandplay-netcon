@@ -74,8 +74,16 @@ class Game extends Model
       return $this->players()->where('users.id', $user->id)->first() ? true : false;
     }
 
+    public function isApproved() {
+      return (boolean) $this->approved;
+    }
+
     public function canRegister(User $user = null) {
       if (!$user) {
+        return false;
+      }
+
+      if (!$this->isApproved()) {
         return false;
       }
 
@@ -96,6 +104,10 @@ class Game extends Model
 
     public function canRegisterToWaitlist(User $user = null) {
       if (!$user) {
+        return false;
+      }
+
+      if (!$this->isApproved()) {
         return false;
       }
 
