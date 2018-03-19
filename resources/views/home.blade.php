@@ -28,7 +28,7 @@
                     
                      @if ($user->games()->count())
 
-                        <table class="table table-hover table-condensed  listado">
+                        <table class="table table-hover table-condensed listado">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -75,7 +75,56 @@
 
                     @endif
 
-                   
+                   <h3>Partidas registradas: </h4>
+
+                     @if ($user->signupGames()->count())
+
+                        <table class="table table-hover table-condensed listado">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Juego</th>
+                                    <th>Estado</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($user->signupGames as $game)
+                                    <tr>
+                                         <td width="15%">
+                                            <a href="{{route('game_view', $game->id)}}" title="Ver partida">
+                                                @if ($game->image_name)
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{route('storage_get', $game->image_name)}}" 
+                                                        alt="{{$game->title}}" 
+                                                        width="100%" 
+                                                    >
+                                                @else
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{ asset('img/sin_imagen.png') }}" 
+                                                        alt="{{$game->title}}" 
+                                                        width="100%" 
+                                                    >
+                                                @endif
+                                            </a>
+                                        </td>    
+                                        <td width="40%">
+                                            <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
+                                        </td>
+                                        <td width="25%">
+                                            {{$game->game_system}}
+                                        </td>
+                                        <td width="20%">
+                                            {{(new Date($game->starting_time))->format('l j F Y H:i')}}
+                                        </td>
+                                    </tr>   
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    @endif
 
                 </div>
             </div>
