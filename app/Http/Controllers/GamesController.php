@@ -36,9 +36,12 @@ class GamesController extends Controller
 
         $games = $query->paginate(10);
 
+        $user_timezone = config('app.timezone');
+
         return view('games.list', [
             'user' => $user,
             'games' => $games,
+            'user_timezone' => $user_timezone,
         ]);
     }
 
@@ -176,6 +179,21 @@ class GamesController extends Controller
             $game->signedup_players_number = $game->signedup_players_number + 1;
             $game->save();
             $game->players()->attach($user->id);
+        });
+
+        return redirect()->route('game_view', ['game' => $game]);
+    }
+
+    public function registerToWaitlist(Game $game) {
+        $user = auth()->user();
+
+        if (!$game->canRegisterToWaitlist($user)) {
+            abort(403, 'No puedes registrarte en la reserva de este juego');
+        }
+
+        DB::transaction(function () use ($game, $user) {
+            $game->save();
+            $game->waitlist()->attach($user->id, ['waitlisted_at' => Carbon::now()]);
         });
 
         return redirect()->route('game_view', ['game' => $game]);

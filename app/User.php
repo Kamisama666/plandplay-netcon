@@ -36,4 +36,8 @@ class User extends Authenticatable
     public function signupGames() {
         return $this->belongsToMany(Game::class, 'game_player', 'player_id', 'game_id');
     }
+
+    public function waitlistGames() {
+        return $this->belongsToMany(Game::class, 'game_waitlist', 'waitlist_id', 'game_id');
+    }
 }
