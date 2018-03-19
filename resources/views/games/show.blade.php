@@ -99,6 +99,8 @@
                                     ¡Estas registrad@!
                                     </strong>
                                 </h3>
+
+                                <a href="{{route('game_unregister', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandorar Partida (¡CUIDADO!)</a>
                             @endif
                         @endif
                     </div>

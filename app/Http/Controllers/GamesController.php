@@ -184,6 +184,22 @@ class GamesController extends Controller
         return redirect()->route('game_view', ['game' => $game]);
     }
 
+    public function unregister(Game $game) {
+        $user = auth()->user();
+
+        if (!$game->isRegistered($user)) {
+            abort(403, 'No estas registrado en este juego');
+        }
+
+        DB::transaction(function () use ($game, $user) {
+            $game->signedup_players_number = $game->signedup_players_number - 1;
+            $game->save();
+            $game->players()->detach($user->id);
+        });
+
+        return redirect()->route('game_view', ['game' => $game]);
+    }
+
     public function registerToWaitlist(Game $game) {
         $user = auth()->user();
 
@@ -192,7 +208,6 @@ class GamesController extends Controller
         }
 
         DB::transaction(function () use ($game, $user) {
-            $game->save();
             $game->waitlist()->attach($user->id, ['waitlisted_at' => Carbon::now()]);
         });
 
