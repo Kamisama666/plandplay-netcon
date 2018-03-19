@@ -47,6 +47,13 @@ class Game extends Model
       return $this->belongsToMany(User::class, 'game_player', 'game_id', 'player_id');
     }
 
+    /**
+     * Players registered in the waitlist of the game
+     */
+    public function waitlist() {
+      return $this->belongsToMany(User::class, 'game_waitlist', 'game_id', 'waitlist_id');
+    }
+
     public function isOwner(User $user = null) {
       if (!$user) {
         return false;
@@ -85,6 +92,26 @@ class Game extends Model
       }
 
       return true;
+    }
+
+    public function canRegisterToWaitlist(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      if ($this->isRegistered($user)) {
+        return false;
+      }
+
+      if ($this->isOwner($user)) {
+        return false;
+      }
+
+      if (!$this->isFull()) {
+        return false;
+      }
+
+      return true;        
     }
 
     public function getStatusAttribute() {

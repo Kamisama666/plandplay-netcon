@@ -48,7 +48,7 @@
                                     </td>
                                     <td>{{$game->game_system}}</td>
                                     <td>{{$game->maximum_players_number <= $game->signedup_players_number ? 'Lleno' : 'Disponible'}}</td>
-                                    <td>{{(new Date($game->starting_time))->format('l j F Y H:i')}}</td>
+                                    <td>{{(new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

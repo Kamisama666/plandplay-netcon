@@ -27,8 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user_timezone = config('app.timezone');
         return view('home', [
             'user' => auth()->user(),
+            'user_timezone' => $user_timezone,
         ]);
     }
 }
