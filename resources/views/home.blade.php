@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Mis partidas</h1></div>
 
@@ -34,7 +34,8 @@
                                     <th>#</th>
                                     <th>Titulo</th>
                                     <th>Juego</th>
-                                    <th>Estado</th>  
+                                    <th>Horario</th>
+                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,13 +60,20 @@
                                                 @endif
                                             </a>
                                         </td>    
-                                        <td width="45%">
+                                        <td width="30%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
                                         </td>
                                         <td width="25%">
                                             {{$game->game_system}}
                                         </td>
-                                        <td width="15%">
+                                        <td width="20%">
+                                            {{
+                                            $game->starting_time
+                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')
+                                            : null
+                                            }}
+                                        </td>
+                                        <td width="10%">
                                             {{$game->approved ? 'Aprobada' : 'Pendiente'}}
                                         </td>
                                     </tr>   
