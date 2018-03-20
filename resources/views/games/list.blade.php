@@ -59,9 +59,9 @@
                                     {{
                                         $game->isPartial()
                                         ? 'Parcial'
-                                        : $game->maximum_players_number <= $game->signedup_players_number 
+                                        : ( $game->maximum_players_number <= $game->signedup_players_number 
                                         ? 'Lleno' 
-                                        : 'Disponible'
+                                        : 'Disponible' )
                                     }}
                                     </td>
                                     <td>{{
