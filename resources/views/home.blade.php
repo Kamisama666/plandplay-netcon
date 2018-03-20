@@ -39,7 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($user->games as $game)
+                                @foreach($user->games()->orderBy('starting_time', 'asc')->get() as $game)
                                     <tr>
                                          <td width="15%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida">
@@ -97,7 +97,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($user->signupGames as $game)
+                                @foreach($user->signupGames()->orderBy('starting_time', 'asc')->get() as $game)
                                     <tr>
                                          <td width="15%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida">
