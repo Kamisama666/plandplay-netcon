@@ -53,7 +53,7 @@
                         @if ($is_owner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
-                        <p>{!! nl2br(e($game->description)) !!}</p>
+                        <p style="word-break: normal;">{!! nl2br(e($game->description)) !!}</p>
 
                         <p><strong>Sistema de Juego</strong>: {{$game->game_system}}</p>
 
