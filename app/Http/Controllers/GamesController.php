@@ -28,7 +28,8 @@ class GamesController extends Controller
         $user = auth()->user();
 
         $query = Game::query()
-            ->where('approved', true);
+            ->where('approved', true)
+            ->orderBy('starting_time', 'asc');
 
         if ($request->has('date')) {
             $query->whereDate('starting_time', new Carbon($request->get('date')));
