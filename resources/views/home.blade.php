@@ -117,7 +117,11 @@
                                             {{$game->game_system}}
                                         </td>
                                         <td width="20%">
-                                            {{(new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')}}
+                                            {{
+                                            $game->starting_time
+                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')
+                                            : null
+                                            }}
                                         </td>
                                     </tr>   
                                 @endforeach

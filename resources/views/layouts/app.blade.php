@@ -58,6 +58,9 @@
                                         <a href="http://www.viruk.com/netconcal/">Calendario de Partidas </a>
                                     </li>
                                     <li>
+                                        <a href="http://netcon.viruk.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('/login') }}">
                                             Login
                                         </a>

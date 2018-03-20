@@ -34,4 +34,5 @@ Route::get('/games', 'GamesController@index')->name('game_list');
 Route::get('/games/{game}', 'GamesController@show')->name('game_view');
 Route::get('/games/{game}/register', 'GamesController@register')->name('game_register');
 Route::get('/games/{game}/unregister', 'GamesController@unregister')->name('game_unregister');
+Route::post('/games/{game}/message', 'MessagesController@store')->name('message_create');
 Route::get('/storage/{filename}', 'GamesController@showImage')->name('storage_get');

@@ -89,7 +89,7 @@
 
                         @if ($user && $registration_open)
 
-                            @if (!$is_owner && !$is_registered && !$is_full && !$is_partial)
+                            @if ($game->canRegister($user))
                                 <a href="{{route('game_register', ['game' => $game])}}" type="button" class="btn btn-primary center-block" role="button">Registrarse</a>
                             @endif
 
@@ -105,6 +105,50 @@
                         @endif
                     </div>
                 </div>
+
+                @if ($game->canReadMessages($user))
+                <div class="panel-body">
+                    <h3>Mensajes</h3>
+
+                    <p>Solo los participantes en la partida podran ver este chat. Puedes usarlo para organizar la partida. Es un sistema muy limitado, por lo que recomendamos usar otros servicios como Hangouts o Discord para comunicarse mas extensamente</p>
+                    
+                    @if ($game->messages()->count())
+                        @foreach($game->messages()->with('game')->get() as $message)
+                            <blockquote class="blockquote">
+                                <p class="mb-0 small">{{$message->content}}</p>
+
+                                @if ($message->author->id === $game->owner->id)
+                                    <footer class="blockquote-footer"><b>{{$message->author->name}}</b></footer>
+                                @else
+                                    <footer class="blockquote-footer">{{$message->author->name}}</footer>
+                                @endif
+                            </blockquote>
+                        @endforeach
+                    @endif
+
+                    <br />
+
+                    @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    {!! Form::open(['url' => route('message_create', ['game' => $game])]) !!}
+                        <div class="form-group">
+                            {!! Form::text('content', '', ['class' => 'form-control','placeholder'=>'Escribe hasta 500 caracteres']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('Enviar mensage', ['class' => 'btn btn-primary']) !!}
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+                @endif
             </div>
         </div>
     </div>

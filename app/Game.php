@@ -54,6 +54,10 @@ class Game extends Model
       return $this->belongsToMany(User::class, 'game_waitlist', 'game_id', 'waitlist_id');
     }
 
+    public function messages() {
+      return $this->hasMany(Message::class, 'game_id');
+    }
+
     public function isOwner(User $user = null) {
       if (!$user) {
         return false;
@@ -78,6 +82,10 @@ class Game extends Model
       return (boolean) $this->approved;
     }
 
+    public function isPartial() {
+      return $this->maximum_players_number === 0;
+    }
+
     public function canRegister(User $user = null) {
       if (!$user) {
         return false;
@@ -96,6 +104,10 @@ class Game extends Model
       }
 
       if ($this->isOwner($user)) {
+        return false;
+      }
+
+      if ($this->isPartial()) {
         return false;
       }
 
@@ -124,6 +136,38 @@ class Game extends Model
       }
 
       return true;        
+    }
+
+    public function canReadMessages(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      if ($this->isRegistered($user)) {
+        return true;
+      }
+
+      if ($this->isOwner($user)) {
+        return true;
+      }
+
+      return false;
+    }
+
+    public function canCreateMessage(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      if ($this->isRegistered($user)) {
+        return true;
+      }
+
+      if ($this->isOwner($user)) {
+        return true;
+      }
+
+      return false;
     }
 
     public function getStatusAttribute() {
