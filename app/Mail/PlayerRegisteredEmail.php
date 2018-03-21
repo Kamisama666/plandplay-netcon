@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageReceivedEmail extends Mailable
+class PlayerRegisteredEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,6 +35,6 @@ class MessageReceivedEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Netcon: Mensaje Recibido')->view('emails.message-received');
+        return $this->subject('¡Nueva jugadora registrada en tu partida de las Netcon!')->view('emails.message-received');
     }
 }

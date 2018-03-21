@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PlayerRegistered;
 use App\Game;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -136,7 +137,7 @@ class GamesController extends Controller
 
         $user_timezone = config('app.timezone');
 
-        $registration_open = env('GAME_REGISTRATION_ENABLED', false);
+        $registration_open = env('GAME_SIGNUP_ENABLED', false);
         
         $is_partial = $game->maximum_players_number === 0;
 
@@ -181,6 +182,8 @@ class GamesController extends Controller
             $game->save();
             $game->players()->attach($user->id);
         });
+
+        event(new PlayerRegistered($game));
 
         return redirect()->route('game_view', ['game' => $game]);
     }

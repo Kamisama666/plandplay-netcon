@@ -45,7 +45,7 @@ class EmailMessageToGameParticipants
         }
 
         foreach ($receivers as $receiver) {
-            Mail::to($receiver)->send(new MessageReceivedEmail($event->game));
+            Mail::to($receiver)->send(new MessageReceivedEmail($event->game, $receiver));
         }
 
     }

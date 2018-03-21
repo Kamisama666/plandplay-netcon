@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\MessageSent' => [
             'App\Listeners\EmailMessageToGameParticipants',
         ],
+        'App\Events\PlayerRegistered' => [
+            'App\Listeners\SendPlayerRegisteredEmail',
+        ],
     ];
 
     /**
