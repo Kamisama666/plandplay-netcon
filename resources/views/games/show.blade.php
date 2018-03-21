@@ -106,6 +106,18 @@
                     </div>
                 </div>
 
+                @if ($is_owner && $game->players()->count())
+                <div class="panel-body">
+                    <h3>Jugadores Registrados</h3>
+
+                    <ul>
+                        @foreach ($game->players as $player)
+                            <li>{{$player->name}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 @if ($game->canReadMessages($user))
                 <div class="panel-body">
                     <h3>Mensajes</h3>
