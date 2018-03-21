@@ -69,7 +69,7 @@
                                         <td width="20%">
                                             {{
                                             $game->starting_time
-                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')
+                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i O')
                                             : null
                                             }}
                                         </td>
@@ -127,7 +127,62 @@
                                         <td width="20%">
                                             {{
                                             $game->starting_time
-                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')
+                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i O')
+                                            : null
+                                            }}
+                                        </td>
+                                    </tr>   
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    @endif
+
+                    <h3>Partidas en Lista de Espera: </h4>
+
+                     @if ($user->waitlistGames()->count())
+
+                        <table class="table table-hover table-condensed listado">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Juego</th>
+                                    <th>Horario</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($user->waitlistGames()->orderBy('starting_time', 'asc')->get() as $game)
+                                    <tr>
+                                         <td width="15%">
+                                            <a href="{{route('game_view', $game->id)}}" title="Ver partida">
+                                                @if ($game->image_name)
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{route('storage_get', $game->image_name)}}" 
+                                                        alt="{{$game->title}}" 
+                                                        width="100%" 
+                                                    >
+                                                @else
+                                                <img 
+                                                        class="image_game" 
+                                                        src="{{ asset('img/sin_imagen.png') }}" 
+                                                        alt="{{$game->title}}" 
+                                                        width="100%" 
+                                                    >
+                                                @endif
+                                            </a>
+                                        </td>    
+                                        <td width="40%">
+                                            <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
+                                        </td>
+                                        <td width="25%">
+                                            {{$game->game_system}}
+                                        </td>
+                                        <td width="20%">
+                                            {{
+                                            $game->starting_time
+                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i O')
                                             : null
                                             }}
                                         </td>

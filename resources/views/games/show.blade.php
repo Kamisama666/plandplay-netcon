@@ -63,8 +63,8 @@
                             {{
                                 $game->starting_time ? 
                                 $user_timezone ?
-                                (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i') : 
-                                (new Date($game->starting_time->toDateTimeString()))->format('l j F Y H:i')
+                                (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i O') : 
+                                (new Date($game->starting_time->toDateTimeString()))->format('l j F Y H:i O')
                                 : null
                             }}
                         </p>
