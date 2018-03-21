@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\PlayerRegistered' => [
             'App\Listeners\SendPlayerRegisteredEmail',
         ],
+        'App\Events\WaitlistPlayerRegistered' => [
+            'App\Listeners\SendEmailWaitlistPlayerRegistered',
+        ],
     ];
 
     /**

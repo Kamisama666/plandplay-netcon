@@ -9,26 +9,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageReceivedEmail extends Mailable
+class WaitlistPlayerRegisteredMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $game;
 
-    public $sender;
-
-    public $receiver;
+    public $player;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Game $game, User $sender, User $receiver)
+    public function __construct(Game $game, User $player)
     {
         $this->game = $game;
-        $this->sender = $sender;
-        $this->receiver = $receiver;
+        $this->player = $player;
     }
 
     /**
@@ -38,6 +35,6 @@ class MessageReceivedEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Netcon: Mensaje Recibido')->view('emails.message-received');
+        return $this->subject('¡Has entrado en una de tus partidas de la reseva en las Netcon!')->view('emails.waitlist-player-registered');
     }
 }

@@ -17,6 +17,7 @@ class SendPlayerRegisteredEmail
      */
     public function handle(PlayerRegistered $event)
     {
-        Mail::to($event->game->owner)->send(new PlayerRegisteredEmail($event->game, $event->game->owner));
+        $owner = $event->game->owner;
+        Mail::to($owner)->send(new PlayerRegisteredEmail($event->game, $owner, $event->player));
     }
 }

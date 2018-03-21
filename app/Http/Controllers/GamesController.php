@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\PlayerRegistered;
+use App\Events\WaitlistPlayerRegistered;
 use App\Game;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -145,6 +146,8 @@ class GamesController extends Controller
 
         $is_registered = $game->isRegistered($user);
 
+        $is_waitlisted = $game->isWaitlisted($user);
+
         return view('games.show', [
             'game'=> $game, 
             'user' => $user,
@@ -154,6 +157,7 @@ class GamesController extends Controller
             'is_full' => $is_full,
             'is_registered' => $is_registered,
             'is_partial' => $is_partial,
+            'is_waitlisted' => $is_waitlisted,
         ]);
     }
 
@@ -170,8 +174,8 @@ class GamesController extends Controller
 
     }
 
-    public function register(Game $game) {
-        $user = auth()->user();
+    public function register(Game $game, User $user = null) {
+        $user = $user ? $user : auth()->user();
 
         if (!$game->canRegister($user)) {
             abort(403, 'No puedes registrarte en este juego');
@@ -183,7 +187,7 @@ class GamesController extends Controller
             $game->players()->attach($user->id);
         });
 
-        event(new PlayerRegistered($game));
+        event(new PlayerRegistered($user, $game));
 
         return redirect()->route('game_view', ['game' => $game]);
     }
@@ -195,11 +199,19 @@ class GamesController extends Controller
             abort(403, 'No estas registrado en este juego');
         }
 
-        DB::transaction(function () use ($game, $user) {
-            $game->signedup_players_number = $game->signedup_players_number - 1;
-            $game->save();
+        $was_full = $game->isFull();
+
+        DB::transaction(function () use ($game, $user, $was_full) {
             $game->players()->detach($user->id);
+            if ($was_full && $game->waitlist()->count()) {
+                $this->popWaitlist($game);                
+            }
+            else {
+                $game->signedup_players_number = $game->signedup_players_number - 1;
+                $game->save();
+            }
         });
+
 
         return redirect()->route('game_view', ['game' => $game]);
     }
@@ -216,5 +228,33 @@ class GamesController extends Controller
         });
 
         return redirect()->route('game_view', ['game' => $game]);
+    }
+
+    public function unregisterToWaitlist(Game $game) {
+        $user = auth()->user();
+
+        if (!$game->isWaitlisted($user)) {
+            abort(403, 'No estas en la lista de espera de este juego');
+        }
+
+        DB::transaction(function () use ($game, $user) {
+            $game->waitlist()->detach($user->id);
+        });
+
+        return redirect()->route('game_view', ['game' => $game]);
+    }
+
+    private function popWaitlist(Game $game) {
+        $waitlisted = $game->waitlist()->orderBy('game_waitlist.waitlisted_at', 'asc')->first();
+
+        if (!$waitlisted) {
+            return;
+        }
+
+        $game->waitlist()->detach($waitlisted->id);
+        $game->players()->attach($waitlisted->id);
+
+        event(new PlayerRegistered($waitlisted, $game));
+        event(new WaitlistPlayerRegistered($waitlisted, $game));
     }
 }

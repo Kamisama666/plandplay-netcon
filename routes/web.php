@@ -35,6 +35,8 @@ Route::middleware(['timezoned'])->group(function() {
   Route::get('/games/{game}', 'GamesController@show')->name('game_view');
 });
 Route::get('/games/{game}/register', 'GamesController@register')->name('game_register');
+Route::get('/games/{game}/register_waitlist', 'GamesController@registerToWaitlist')->name('game_register_waitlist');
 Route::get('/games/{game}/unregister', 'GamesController@unregister')->name('game_unregister');
+Route::get('/games/{game}/unregister_waitlist', 'GamesController@unregisterToWaitlist')->name('game_unregister_waitlist');
 Route::post('/games/{game}/message', 'MessagesController@store')->name('message_create');
 Route::get('/storage/{filename}', 'GamesController@showImage')->name('storage_get');

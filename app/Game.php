@@ -78,6 +78,14 @@ class Game extends Model
       return $this->players()->where('users.id', $user->id)->first() ? true : false;
     }
 
+    public function isWaitlisted(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      return $this->waitlist()->where('users.id', $user->id)->first() ? true : false;
+    }
+
     public function isApproved() {
       return (boolean) $this->approved;
     }
@@ -112,6 +120,38 @@ class Game extends Model
       }
 
       return true;
+    }
+
+    public function canWaitlist(User $user = null) {
+      if (!$user) {
+        return false;
+      }
+
+      if (!$this->isApproved()) {
+        return false;
+      }
+
+      if ($this->isOwner($user)) {
+        return false;
+      }
+
+      if ($this->isPartial()) {
+        return false;
+      }
+
+      if ($this->isWaitlisted($user)) {
+        return false;
+      }
+
+      if ($this->isRegistered($user)) {
+        return false;
+      }
+
+      if ($this->isFull()) {
+        return true;
+      }
+
+      return false;
     }
 
     public function canRegisterToWaitlist(User $user = null) {

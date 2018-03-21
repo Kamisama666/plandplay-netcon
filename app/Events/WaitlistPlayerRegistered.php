@@ -4,16 +4,15 @@ namespace App\Events;
 
 use App\Game;
 use App\User;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PlayerRegistered
+class WaitlistPlayerRegistered
 {
     use SerializesModels;
 
-    public $game;
-
     public $player;
+
+    public $game;
 
     /**
      * Create a new event instance.
@@ -22,7 +21,17 @@ class PlayerRegistered
      */
     public function __construct(User $player, Game $game)
     {
-        $this->game = $game;
         $this->player = $player;
+        $this->game = $game;
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
     }
 }

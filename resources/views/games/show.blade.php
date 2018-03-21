@@ -87,10 +87,20 @@
                             <strong>Numero de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
                         </p>
 
+                        @if ($is_full)
+                            <h3 class="text-center text-info">
+                                <strong>
+                                El juego esta lleno
+                                </strong>
+                            </h3>
+                        @endif
+
                         @if ($user && $registration_open)
 
                             @if ($game->canRegister($user))
                                 <a href="{{route('game_register', ['game' => $game])}}" type="button" class="btn btn-primary center-block" role="button">Registrarse</a>
+                            @elseif ($game->canWaitlist($user))
+                                <a href="{{route('game_register_waitlist', ['game' => $game])}}" type="button" class="btn btn-warning center-block" role="button">Apuntarse a la Lista de Espera</a>
                             @endif
 
                             @if ($is_registered)
@@ -102,16 +112,40 @@
 
                                 <a href="{{route('game_unregister', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandorar Partida (¡CUIDADO!)</a>
                             @endif
+
+                            @if ($is_waitlisted)
+                                <h3 class="text-center">
+                                    <strong>
+                                    ¡Estas en la lista de espera!
+                                    </strong>
+                                </h3>
+
+                                <p>Si queda un espacio libre y estas la primera en la lista de espera, te registraremos en la partida automáticamente y te enviaremos un correo para avisarte.</p>
+
+                                <a href="{{route('game_unregister_waitlist', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandorar Lista de Espera (¡CUIDADO!)</a>
+                            @endif
                         @endif
                     </div>
                 </div>
 
                 @if ($is_owner && $game->players()->count())
                 <div class="panel-body">
-                    <h3>Jugadores Registrados</h3>
+                    <h3>Jugadoras Registradas</h3>
 
                     <ul>
                         @foreach ($game->players as $player)
+                            <li>{{$player->name}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                @if ($is_owner && $game->waitlist()->count())
+                <div class="panel-body">
+                    <h3>Jugadoras en Lista de Espera</h3>
+
+                    <ul>
+                        @foreach ($game->waitlist as $player)
                             <li>{{$player->name}}</li>
                         @endforeach
                     </ul>

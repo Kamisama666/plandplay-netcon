@@ -15,17 +15,20 @@ class PlayerRegisteredEmail extends Mailable
 
     public $game;
 
-    public $user;
+    public $owner;
+
+    public $player;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Game $game, User $user)
+    public function __construct(Game $game, User $owner, User $player)
     {
         $this->game = $game;
-        $this->user = $user;
+        $this->owner = $owner;
+        $this->player = $player;
     }
 
     /**
@@ -35,6 +38,6 @@ class PlayerRegisteredEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('¡Nueva jugadora registrada en tu partida de las Netcon!')->view('emails.message-received');
+        return $this->subject('¡Nueva jugadora registrada en tu partida de las Netcon!')->view('emails.player-registered');
     }
 }
