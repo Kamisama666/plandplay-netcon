@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Game;
 use App\Message;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ class MessagesController extends Controller
       $message->game_id = $game->id;
 
       $message->save();
+
+      event(new MessageSent($game, $user));
 
       return redirect()->route('game_view', ['game' => $game]);
     }
