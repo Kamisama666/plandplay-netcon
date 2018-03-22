@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\PlayerRegistered;
+use App\Events\PlayerUnregistered;
 use App\Events\WaitlistPlayerRegistered;
 use App\Game;
 use Carbon\Carbon;
@@ -212,6 +213,7 @@ class GamesController extends Controller
             }
         });
 
+        event(new PlayerUnregistered($game, $user));
 
         return redirect()->route('game_view', ['game' => $game]);
     }
