@@ -174,8 +174,8 @@ class GamesController extends Controller
 
     }
 
-    public function register(Game $game, User $user = null) {
-        $user = $user ? $user : auth()->user();
+    public function register(Game $game) {
+        $user = auth()->user();
 
         if (!$game->canRegister($user)) {
             abort(403, 'No puedes registrarte en este juego');
