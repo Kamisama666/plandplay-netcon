@@ -66,7 +66,7 @@
                                     </td>
                                     <td>{{
                                         $game->starting_time
-                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i O')
+                                            ? (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i')
                                             : null
                                     }}</td>
                                 </tr>
