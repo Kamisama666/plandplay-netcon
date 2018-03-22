@@ -67,7 +67,7 @@ class Game extends Model
     }
 
     public function isFull() {
-      return (bool) $this->maximum_players_number <= $this->signedup_players_number;
+      return $this->maximum_players_number <= $this->signedup_players_number;
     }
 
     public function isRegistered(User $user = null) {
