@@ -27,7 +27,7 @@
 
                     <br>
 
-                    <p>si estáis registrados en la página os saldrá el horario en el huso con el que os hayáis registrado, sino saldrá en GMT+1</p>
+                    <p>si estáis registrados en la página os saldrá el horario en el huso con el que os hayáis registrado, sino saldrá en GMT+2</p>
 
                     <br>
 
