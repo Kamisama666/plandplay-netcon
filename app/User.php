@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Socialite\Facades\Socialite;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    private $cache;
 
     protected $table = 'users';
 
@@ -29,6 +32,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getNameAttribute($value) {
+        if (!$value) {
+            return 'Netconner' . $this->id;
+        }
+
+        return $value;
+    }
+
     public function games() {
         return $this->hasMany(Game::class, 'owner_id');
     }
@@ -40,4 +51,5 @@ class User extends Authenticatable
     public function waitlistGames() {
         return $this->belongsToMany(Game::class, 'game_waitlist', 'waitlist_id', 'game_id');
     }
+
 }

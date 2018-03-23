@@ -37,6 +37,7 @@ class PostLoginController extends Controller
 
         $user = auth()->user();
 
+        $user->name = $request->get('name');
         $user->timezone = $request->get('timezone');
         $user->registration_complete = true;
 

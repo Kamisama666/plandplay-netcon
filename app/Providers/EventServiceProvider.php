@@ -13,18 +13,18 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\MessageSent' => [
-            'App\Listeners\EmailMessageToGameParticipants',
-        ],
-        'App\Events\PlayerRegistered' => [
-            'App\Listeners\SendPlayerRegisteredEmail',
-        ],
-        'App\Events\PlayerUnregistered' => [
-            'App\Listeners\SendPlayerUnregisteredEmail',
-        ],
-        'App\Events\WaitlistPlayerRegistered' => [
-            'App\Listeners\SendEmailWaitlistPlayerRegistered',
-        ],
+        // 'App\Events\MessageSent' => [
+        //     'App\Listeners\EmailMessageToGameParticipants',
+        // ],
+        // 'App\Events\PlayerRegistered' => [
+        //     'App\Listeners\SendPlayerRegisteredEmail',
+        // ],
+        // 'App\Events\PlayerUnregistered' => [
+        //     'App\Listeners\SendPlayerUnregisteredEmail',
+        // ],
+        // 'App\Events\WaitlistPlayerRegistered' => [
+        //     'App\Listeners\SendEmailWaitlistPlayerRegistered',
+        // ],
     ];
 
     /**
