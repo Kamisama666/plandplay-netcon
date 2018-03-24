@@ -30,7 +30,8 @@ class PostLoginController extends Controller
                         return $fail($attribute.' no es valido.');
                     }
                 }
-            ]
+            ],
+            'name' => 'required|max:100'
         ];
 
         Validator::make($request->all(), $validationRules)->validate();
