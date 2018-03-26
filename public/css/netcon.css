@@ -173,7 +173,15 @@ nav.navbar a.dropdown-toggle {
 }
 
 footer {
-	background-color: #007bbb;
+	background-color: #999;
+	padding: 15px;
+	height: 60px;
+	text-align: center;
+}
+
+footer a {
+	color: #fff;
+	padddin: 10px;
 }
 
 @media (max-width: 767px) {
