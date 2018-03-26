@@ -115,6 +115,10 @@
         </nav>
 
         @yield('content')
+
+        <footer>
+            <a href="http://netcon.viruk.com/politica-de-privacidad-de-datos/" target="_blank">Politica de privacidad</a>
+        </footer>
     </div>
 
     <!-- Scripts -->
