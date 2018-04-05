@@ -44,6 +44,10 @@ class User extends Authenticatable
         return $this->hasMany(Game::class, 'owner_id');
     }
 
+    public function prices() {
+        return $this->hasMany(Price::class, 'user_id');
+    }
+
     public function signupGames() {
         return $this->belongsToMany(Game::class, 'game_player', 'player_id', 'game_id');
     }

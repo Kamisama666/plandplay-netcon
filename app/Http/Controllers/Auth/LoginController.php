@@ -66,6 +66,12 @@ class LoginController extends Controller
 
         $user = Socialite::driver($provider)->user();
 
+        $banned_users = explode(',', env('DISABLE_LOGIN', ''));
+
+        if (in_array($user->id, $banned_users)) {
+            abort(403, 'Unauthorised Access');
+        }
+
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
 

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1>Mis partidas</h1></div>
+                <div class="panel-heading"><h1>Mi perfil</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -23,6 +23,37 @@
                     <p style="text-align: center;">
                     Si tienes cualquier duda o comentario ponte en <a href="http://netcon.viruk.com/contacto" target="_blank"> contacto con nosotros</a>
                     </p>
+
+                    @if ($user->prices()->count())
+                    <h3>Premios Ganados</h3>
+
+                    <p>
+                        Para reclamar tus premios, envianos un correo a la direccion <b>netconcerouno@gmail.com</b> con el titulo <b>"Netcon18 Premio"</b>. En el contenido pon el <b>codigo</b> del premio y, si es fisico, <b>la direccion</b> a la que deseas que se te envie.
+                    </p>
+
+                    <table class="table table-hover table-condensed listado">
+                        <thead>
+                            <tr>
+                                <th>Premio</th>
+                                <th>Codigo</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach($user->prices as $price)
+                                <tr>
+                                    <td width="80%">
+                                        {{$price->description}}
+                                    </td>
+                                    <td width="20%">
+                                        {{$price->code}}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    @endif
 
                     <h3>Partidas subidas: </h4>
                     

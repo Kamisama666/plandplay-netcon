@@ -12,7 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if ($user)
-                        <a href="{{route('home')}}">Volver a mis partidas</a> | 
+                        <a href="{{route('home')}}">Volver a mi perfil</a> | 
                     @else
                         <a href="/login">Login</a> | 
                     @endif

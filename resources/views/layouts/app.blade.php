@@ -76,7 +76,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{route('home')}}">Mis partidas </a>
+                                        <a href="{{route('home')}}">Mi perfil </a>
                                     </li>
                                     <li>
                                         <a href="{{route('game_list')}}">Lista de Partidas </a>

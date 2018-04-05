@@ -15,7 +15,7 @@
 
                 <div class="panel-body">
 
-                    <p><a href="{{route('home')}}">< Volver a mis partidas</a></p>
+                    <p><a href="{{route('home')}}">Volver a mi perfil</a></p>
 
                     <div id="sube-partida" class="account-box">
                         @if ($errors->any())
