@@ -31,7 +31,7 @@
 
                         <div class="form-group">
                             {!! Form::label('name', 'Apodo (no uses tu nombre verdadero)', ['class' => 'control-label']) !!}
-                            {!! Form::text('name') !!}
+                            {!! Form::text('name', $name) !!}
                         </div>
 
                         <div class="form-group">

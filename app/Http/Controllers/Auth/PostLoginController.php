@@ -15,6 +15,7 @@ class PostLoginController extends Controller
 
         $default_timezone = config('app.timezone');
         return view('auth.post-login', [
+            'name' => $user->name,
             'timezone_list' => array_combine($timezone_list, $timezone_list), 
             'default_timezone' => $default_timezone
         ]);
