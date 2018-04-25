@@ -5,7 +5,7 @@
     </span>
 
     <span>
-      <a href="http://netcon.viruk.com/politica-de-cookies/" target="_blank">Politica de cookies</a>
+      <a href="http://netcon.viruk.com/politica-de-cookies/" target="_blank">Política de cookies</a>
     </span>
 
     <button class="js-cookie-consent-agree cookie-consent__agree">

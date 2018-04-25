@@ -27,22 +27,22 @@
 
                     <br>
 
-                    <p>si estáis registrados en la página os saldrá el horario en el huso con el que os hayáis registrado, sino saldrá en GMT+2</p>
+                    <p>Si estáis registrados en la página os saldrá el horario en el huso con el que os hayáis registrado, si no saldrá en GMT+1 (Madrid, París, Berlín...)</p>
 
                     <br>
 
                     <div class="col-md-10 col-md-offset-1">
-                        <a href="{{route('game_list') . '?date=2018-03-28'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Miercoles</a>
+                        <a href="{{route('game_list') . '?date=2018-03-28'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Miércoles</a>
                         <a href="{{route('game_list') . '?date=2018-03-29'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Jueves</a>
                         <a href="{{route('game_list') . '?date=2018-03-30'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Viernes</a>
-                        <a href="{{route('game_list') . '?date=2018-03-31'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Sabado</a>
+                        <a href="{{route('game_list') . '?date=2018-03-31'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Sábado</a>
                         <a href="{{route('game_list') . '?date=2018-04-01'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Domingo</a>
                     </div>   
 
                     <table class="table">
                         <thead>
                             <tr>
-                               <th>Titulo</th>
+                               <th>Título</th>
                                <th>Juego</th>
                                <th>Estado</th>
                                <th>Hora de Inicio</th>

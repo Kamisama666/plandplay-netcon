@@ -59,7 +59,7 @@
 
                         <p><strong>Plataforma de Juego</strong>: {{$game->platform}}</p>
 
-                        <p><strong>Hora de inicio</strong>: 
+                        <p><strong>Hora de Inicio</strong>: 
                             {{
                                 $game->starting_time ? 
                                 $user_timezone ?
@@ -69,28 +69,28 @@
                             }}
                         </p>
 
-                        <p><strong>Numero de Horas de duracion</strong>: {{$game->duration_hours}}</p>
+                        <p><strong>Número de Horas de Duración</strong>: {{$game->duration_hours}}</p>
 
-                        <p><strong>Numero de Sesiones</strong>: {{$game->sessions_number}}</p>
+                        <p><strong>Número de Sesiones</strong>: {{$game->sessions_number}}</p>
                         
-                        <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
+                        <p><strong>Emitida</strong>: {{$game->streamed ? 'Sí' : 'No'}}</p>
 
-                        <p><strong>Partida de iniciación</strong>: {{$game->beginner_friendly ? 'Si' : 'No'}}</p>
+                        <p><strong>Partida de Iniciación</strong>: {{$game->beginner_friendly ? 'Sí' : 'No'}}</p>
 
                         @if ($game->stream_channel)
-                        <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
+                        <p><strong>Canal de Emisión</strong>: {{$game->stream_channel}}</p>
                         @endif
 
-                        <p><strong>Numero Maximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
+                        <p><strong>Número Máximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
 
                         <p>
-                            <strong>Numero de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
+                            <strong>Número de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
                         </p>
 
                         @if ($is_full)
                             <h3 class="text-center text-info">
                                 <strong>
-                                El juego esta lleno
+                                El juego está lleno
                                 </strong>
                             </h3>
                         @endif
@@ -106,23 +106,23 @@
                             @if ($is_registered)
                                 <h3 class="text-center">
                                     <strong>
-                                    ¡Estas registrad@!
+                                    ¡Estás registrad@!
                                     </strong>
                                 </h3>
 
-                                <a href="{{route('game_unregister', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandorar Partida (¡CUIDADO!)</a>
+                                <a href="{{route('game_unregister', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandonar Partida (¡CUIDADO!)</a>
                             @endif
 
                             @if ($is_waitlisted)
                                 <h3 class="text-center">
                                     <strong>
-                                    ¡Estas en la lista de espera!
+                                    ¡Estás en la Lista de Espera!
                                     </strong>
                                 </h3>
 
-                                <p>Si queda un espacio libre y estas la primera en la lista de espera, te registraremos en la partida automáticamente y te enviaremos un correo para avisarte.</p>
+                                <p>Si queda un espacio libre y estás la primera en la Lista de Espera, te registraremos en la partida automáticamente y te enviaremos un correo para avisarte.</p>
 
-                                <a href="{{route('game_unregister_waitlist', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandorar Lista de Espera (¡CUIDADO!)</a>
+                                <a href="{{route('game_unregister_waitlist', ['game' => $game])}}" type="button" class="btn btn-danger center-block" role="button">Abandonar Lista de Espera (¡CUIDADO!)</a>
                             @endif
                         @endif
                     </div>
@@ -156,7 +156,7 @@
                 <div class="panel-body">
                     <h3>Mensajes</h3>
 
-                    <p>Solo los participantes en la partida podran ver este chat. Puedes usarlo para organizar la partida. Es un sistema muy limitado, por lo que recomendamos usar otros servicios como Hangouts o Discord para comunicarse mas extensamente</p>
+                    <p>Solo los participantes en la partida podrán ver este chat. Puedes usarlo para organizar la partida. Es un sistema muy limitado, por lo que recomendamos usar otros servicios como Hangouts o Discord para comunicarse más extensamente</p>
                     
                     @if ($game->messages()->count())
                         @foreach($game->messages()->with('game')->get() as $message)
@@ -190,7 +190,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Enviar mensage', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Enviar mensaje', ['class' => 'btn btn-primary']) !!}
                         </div>
                     {!! Form::close() !!}
                 </div>
