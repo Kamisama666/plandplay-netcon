@@ -49,7 +49,7 @@
                         @guest
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    Menu <span class="caret"></span>
+                                    Menú <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -117,7 +117,7 @@
         @yield('content')
 
         <footer>
-            <a href="http://netcon.viruk.com/politica-de-privacidad-de-datos/" target="_blank">Politica de privacidad</a>
+            <a href="http://netcon.viruk.com/politica-de-privacidad-de-datos/" target="_blank">Política de privacidad</a>
         </footer>
     </div>
 

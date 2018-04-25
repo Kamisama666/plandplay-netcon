@@ -2,15 +2,15 @@
 
 return [
   'attributes' => [
-    'title' => 'Titulo',
-    'description' => 'Descripcion',
+    'title' => 'Título',
+    'description' => 'Descripción',
     'game_system' => 'Sistema de Juego',
-    'platform' => 'Platforma de Juego',
-    'time_preference' => 'Preferencia de fecha y Hora',
-    'duration_hours' => 'Numero de Horas de Duracion',
-    'sessions_number' => 'Numero de Sesiones',
-    'maximum_players_number' => 'Numero Maximo de Jugadores',
-    'stream_channel' => 'Canal de Emision',
+    'platform' => 'Plataforma de Juego',
+    'time_preference' => 'Preferencia de Fecha y Hora',
+    'duration_hours' => 'Número de Horas de Duración',
+    'sessions_number' => 'Número de Sesiones',
+    'maximum_players_number' => 'Número Máximo de Jugadores',
+    'stream_channel' => 'Canal de Emisión',
     'timezone' => 'Zona Horaria',
   ],
 ];
