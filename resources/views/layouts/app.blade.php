@@ -40,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                         
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,7 +59,7 @@
                                         <a href="http://www.viruk.com/netconcal/">Calendario de Partidas </a>
                                     </li>
                                     <li>
-                                        <a href="http://netcon.viruk.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
+                                        <a href="http://netconplay.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/login') }}">
@@ -92,7 +92,7 @@
                                     @endif
 
                                     <li>
-                                        <a href="http://netcon.viruk.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
+                                        <a href="http://netconplay.com/contacto" title="Ponte en contacto con nosotros" target="_blank">Contacto</a>
                                     </li>
 
                                     <li>
@@ -117,7 +117,7 @@
         @yield('content')
 
         <footer>
-            <a href="http://netcon.viruk.com/politica-de-privacidad-de-datos/" target="_blank">Politica de privacidad</a>
+            <a href="http://netconplay.com/politica-de-privacidad-de-datos/" target="_blank">Politica de privacidad</a>
         </footer>
     </div>
 

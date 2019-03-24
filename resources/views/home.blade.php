@@ -19,9 +19,9 @@
                         <a class="btn btn-primary" href="{{route('game_post')}}">¡SUBE UNA NUEVA PARTIDA!</a>
                     </p>
                     @endif
-                    
+
                     <p style="text-align: center;">
-                    Si tienes cualquier duda o comentario ponte en <a href="http://netcon.viruk.com/contacto" target="_blank"> contacto con nosotros</a>
+                    Si tienes cualquier duda o comentario ponte en <a href="http://netconplay.com/contacto" target="_blank"> contacto con nosotros</a>
                     </p>
 
                     @if ($user->prices()->count())
@@ -56,7 +56,7 @@
                     @endif
 
                     <h3>Partidas subidas: </h4>
-                    
+
                      @if ($user->games()->count())
 
                         <table class="table table-hover table-condensed listado">
@@ -75,22 +75,22 @@
                                          <td width="15%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida">
                                                 @if ($game->image_name)
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{route('storage_get', $game->image_name)}}" 
-                                                        alt="{{$game->title}}" 
-                                                        width="100%" 
+                                                <img
+                                                        class="image_game"
+                                                        src="{{route('storage_get', $game->image_name)}}"
+                                                        alt="{{$game->title}}"
+                                                        width="100%"
                                                     >
                                                 @else
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{ asset('img/sin_imagen.png') }}" 
-                                                        alt="{{$game->title}}" 
-                                                        width="100%" 
+                                                <img
+                                                        class="image_game"
+                                                        src="{{ asset('img/sin_imagen.png') }}"
+                                                        alt="{{$game->title}}"
+                                                        width="100%"
                                                     >
                                                 @endif
                                             </a>
-                                        </td>    
+                                        </td>
                                         <td width="30%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
                                         </td>
@@ -107,7 +107,7 @@
                                         <td width="10%">
                                             {{$game->approved ? 'Aprobada' : 'Pendiente'}}
                                         </td>
-                                    </tr>   
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -124,7 +124,7 @@
                                     <th>#</th>
                                     <th>Titulo</th>
                                     <th>Juego</th>
-                                    <th>Horario</th>  
+                                    <th>Horario</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,22 +133,22 @@
                                          <td width="15%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida">
                                                 @if ($game->image_name)
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{route('storage_get', $game->image_name)}}" 
-                                                        alt="{{$game->title}}" 
-                                                        width="100%" 
+                                                <img
+                                                        class="image_game"
+                                                        src="{{route('storage_get', $game->image_name)}}"
+                                                        alt="{{$game->title}}"
+                                                        width="100%"
                                                     >
                                                 @else
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{ asset('img/sin_imagen.png') }}" 
-                                                        alt="{{$game->title}}" 
-                                                        width="100%" 
+                                                <img
+                                                        class="image_game"
+                                                        src="{{ asset('img/sin_imagen.png') }}"
+                                                        alt="{{$game->title}}"
+                                                        width="100%"
                                                     >
                                                 @endif
                                             </a>
-                                        </td>    
+                                        </td>
                                         <td width="40%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
                                         </td>
@@ -162,7 +162,7 @@
                                             : null
                                             }}
                                         </td>
-                                    </tr>   
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -179,7 +179,7 @@
                                     <th>#</th>
                                     <th>Titulo</th>
                                     <th>Juego</th>
-                                    <th>Horario</th>  
+                                    <th>Horario</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -188,22 +188,22 @@
                                          <td width="15%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida">
                                                 @if ($game->image_name)
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{route('storage_get', $game->image_name)}}" 
-                                                        alt="{{$game->title}}" 
-                                                        width="100%" 
+                                                <img
+                                                        class="image_game"
+                                                        src="{{route('storage_get', $game->image_name)}}"
+                                                        alt="{{$game->title}}"
+                                                        width="100%"
                                                     >
                                                 @else
-                                                <img 
-                                                        class="image_game" 
-                                                        src="{{ asset('img/sin_imagen.png') }}" 
-                                                        alt="{{$game->title}}" 
-                                                        width="100%" 
+                                                <img
+                                                        class="image_game"
+                                                        src="{{ asset('img/sin_imagen.png') }}"
+                                                        alt="{{$game->title}}"
+                                                        width="100%"
                                                     >
                                                 @endif
                                             </a>
-                                        </td>    
+                                        </td>
                                         <td width="40%">
                                             <a href="{{route('game_view', $game->id)}}" title="Ver partida" >{{$game->title}}</a>
                                         </td>
@@ -217,7 +217,7 @@
                                             : null
                                             }}
                                         </td>
-                                    </tr>   
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

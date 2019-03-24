@@ -5,7 +5,7 @@
 @endsection
 
 @section('scripts')
- <script src="{{ asset('js/game_list.js') }}"></script> 
+ <script src="{{ asset('js/game_list.js') }}"></script>
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <p style="text-align: center;">
-                    Si tienes cualquier duda o comentario ponte en <a href="http://netcon.viruk.com/contacto" target="_blank"> contacto con nosotros</a>
+                    Si tienes cualquier duda o comentario ponte en <a href="http://netconplay.com/contacto" target="_blank"> contacto con nosotros</a>
                     </p>
 
                     <br>
@@ -37,7 +37,7 @@
                         <a href="{{route('game_list') . '?date=2018-03-30'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Viernes</a>
                         <a href="{{route('game_list') . '?date=2018-03-31'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Sabado</a>
                         <a href="{{route('game_list') . '?date=2018-04-01'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Domingo</a>
-                    </div>   
+                    </div>
 
                     <table class="table">
                         <thead>
@@ -59,8 +59,8 @@
                                     {{
                                         $game->isPartial()
                                         ? 'Parcial'
-                                        : ( $game->maximum_players_number <= $game->signedup_players_number 
-                                        ? 'Lleno' 
+                                        : ( $game->maximum_players_number <= $game->signedup_players_number
+                                        ? 'Lleno'
                                         : 'Disponible' )
                                     }}
                                     </td>

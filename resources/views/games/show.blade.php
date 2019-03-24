@@ -12,12 +12,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if ($user)
-                        <a href="{{route('home')}}">Volver a mi perfil</a> | 
+                        <a href="{{route('home')}}">Volver a mi perfil</a> |
                     @else
-                        <a href="/login">Login</a> | 
+                        <a href="/login">Login</a> |
                     @endif
 
-                    <a href="http://netcon.viruk.com/contacto" target="_blank">Contacto</a>
+                    <a href="http://netconplay.com/contacto" target="_blank">Contacto</a>
                 </div>
 
                 <div id="game_view" class="panel-body" >
@@ -32,24 +32,24 @@
 
                     <p style="padding: 15px; ">
                     @if ($game->image_name)
-                        <img 
-                                class="image_game" 
-                                src="{{route('storage_get', $game->image_name)}}" 
-                                alt="{{$game->title}}" 
-                                
+                        <img
+                                class="image_game"
+                                src="{{route('storage_get', $game->image_name)}}"
+                                alt="{{$game->title}}"
+
                             >
                     @else
-                        <img 
-                                class="image_game" 
-                                src="{{ asset('img/sin_imagen.png') }}" 
-                                alt="{{$game->title}}" 
-                                
+                        <img
+                                class="image_game"
+                                src="{{ asset('img/sin_imagen.png') }}"
+                                alt="{{$game->title}}"
+
                             >
                     @endif
                     </p>
 
                     <div class="col-md-8 col-md-offset-2">
-                        <p><strong>Organizador</strong>: {{$game->owner->name}}</p>                        
+                        <p><strong>Organizador</strong>: {{$game->owner->name}}</p>
                         @if ($is_owner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
@@ -59,11 +59,11 @@
 
                         <p><strong>Plataforma de Juego</strong>: {{$game->platform}}</p>
 
-                        <p><strong>Hora de inicio</strong>: 
+                        <p><strong>Hora de inicio</strong>:
                             {{
-                                $game->starting_time ? 
+                                $game->starting_time ?
                                 $user_timezone ?
-                                (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i') : 
+                                (new Date($game->starting_time->setTimezone($user_timezone)->toDateTimeString()))->format('l j F Y H:i') :
                                 (new Date($game->starting_time->toDateTimeString()))->format('l j F Y H:i')
                                 : null
                             }}
@@ -72,7 +72,7 @@
                         <p><strong>Numero de Horas de duracion</strong>: {{$game->duration_hours}}</p>
 
                         <p><strong>Numero de Sesiones</strong>: {{$game->sessions_number}}</p>
-                        
+
                         <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
 
                         <p><strong>Partida de iniciación</strong>: {{$game->beginner_friendly ? 'Si' : 'No'}}</p>
@@ -157,7 +157,7 @@
                     <h3>Mensajes</h3>
 
                     <p>Solo los participantes en la partida podran ver este chat. Puedes usarlo para organizar la partida. Es un sistema muy limitado, por lo que recomendamos usar otros servicios como Hangouts o Discord para comunicarse mas extensamente</p>
-                    
+
                     @if ($game->messages()->count())
                         @foreach($game->messages()->with('game')->get() as $message)
                             <blockquote class="blockquote">
