@@ -84,6 +84,7 @@ class GamesController extends Controller {
 			'sessions_number' => 'integer|min:1|required',
 			'maximum_players_number' => 'integer|min:1|required',
 			'stream_channel' => 'string:250|nullable',
+			'content_warning' => 'string:250|nullable',
 		];
 
 		Validator::make($request->all(), $validationRules, $messages)->validate();
@@ -107,6 +108,8 @@ class GamesController extends Controller {
 		$game->streamed = $request->has('streamed') && $request->get('streamed') === 'streamed' ? true : false;
 		$game->beginner_friendly = $request->has('beginner_friendly') && $request->get('beginner_friendly') === 'beginner_friendly' ? true : false;
 		$game->safety_tools = $request->has('safety_tools') && $request->get('safety_tools') === 'safety_tools' ? true : false;
+
+		$game->content_warning = $request->get('content_warning');
 
 		$game->session_no = 1;
 		$game->owner_id = auth()->user()->id;

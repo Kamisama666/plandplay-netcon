@@ -29,6 +29,7 @@ class CreateGamesTable extends Migration {
 			$table->boolean('beginner_friendly')->default(false);
 			$table->boolean('approved')->default(false);
 			$table->boolean('safety_tools')->default(false);
+			$table->string('content_warning', 250)->nullable();
 			$table->boolean('children_created')->default(false);
 			$table->integer('owner_id')->unsigned();
 			$table->integer('parent_id')->unsigned()->nullable();

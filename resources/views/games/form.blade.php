@@ -125,6 +125,14 @@ $(document).ready(function() {
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('platform', 'Aviso de Contenido Sensible', ['class' => 'control-label']) !!}
+                             <small class="form-text text-muted">
+                                Contenido o temas de la partida de los que creas necesario avisar a las jugadoras: violencia sexual, dismorfia corporal, etc.
+                            </small>
+                            {!! Form::text('content_warning','',['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::label('stream_channel', 'Canal de Emision', ['class' => 'control-label']) !!}
                             <small id="stream_channel" class="form-text text-muted">
                                Si va a ser emitida indicanos la url del canal de emisión

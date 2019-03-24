@@ -79,6 +79,8 @@
 
                         <p><strong>Usa herramientas de Seguridad</strong>: {{$game->safety_tools ? 'Si' : 'No'}}</p>
 
+                        <p><strong>Aviso de Contenido Sensible</strong>: {{$game->content_warning}}</p>
+
                         @if ($game->stream_channel)
                         <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
                         @endif

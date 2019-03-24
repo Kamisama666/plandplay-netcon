@@ -67,6 +67,7 @@ class MultipleSessionsController extends Controller {
 			$childrenGame->safety_tools = $game->safety_tools;
 			$childrenGame->owner_id = auth()->user()->id;
 			$childrenGame->image_name = $game->image_name;
+			$childrenGame->content_warning = $game->content_warning;
 
 			$childrenGame->parent_id = $game->id;
 			$childrenGame->session_no = $i;
