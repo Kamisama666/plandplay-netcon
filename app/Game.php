@@ -29,7 +29,9 @@ class Game extends Model {
 		'signedup_players_number' => 'integer',
 		'streamed' => 'boolean',
 		'approved' => 'boolean',
-		'open_signups' => 'boolean',
+		'children_created' => 'boolean',
+		'safety_tools' => 'boolean',
+		'session_no' => 'integer',
 	];
 
 	function getTitleAttribute($value) {

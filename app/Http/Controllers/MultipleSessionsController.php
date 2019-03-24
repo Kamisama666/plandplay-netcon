@@ -64,6 +64,7 @@ class MultipleSessionsController extends Controller {
 			$childrenGame->stream_channel = $game->stream_channel;
 			$childrenGame->streamed = $game->streamed;
 			$childrenGame->beginner_friendly = $game->beginner_friendly;
+			$childrenGame->safety_tools = $game->safety_tools;
 			$childrenGame->owner_id = auth()->user()->id;
 			$childrenGame->image_name = $game->image_name;
 

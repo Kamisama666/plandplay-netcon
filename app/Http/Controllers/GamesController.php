@@ -106,6 +106,8 @@ class GamesController extends Controller {
 		$game->stream_channel = $request->get('stream_channel');
 		$game->streamed = $request->has('streamed') && $request->get('streamed') === 'streamed' ? true : false;
 		$game->beginner_friendly = $request->has('beginner_friendly') && $request->get('beginner_friendly') === 'beginner_friendly' ? true : false;
+		$game->safety_tools = $request->has('safety_tools') && $request->get('safety_tools') === 'safety_tools' ? true : false;
+
 		$game->session_no = 1;
 		$game->owner_id = auth()->user()->id;
 

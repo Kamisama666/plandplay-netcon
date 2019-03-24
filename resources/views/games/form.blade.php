@@ -65,9 +65,9 @@ $(document).ready(function() {
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('platform', 'Plataforma de Juego', ['class' => 'control-label']) !!}
+                            {!! Form::label('platform', 'Plataforma de Juego y Requerimientos', ['class' => 'control-label']) !!}
                              <small id="platform" class="form-text text-muted">
-                                Informa a tus jugadoras que plataforma usareis para comunicaros durante la partida Fantasy Grounds, Roll20, Hangout, Skype, Discord, Telegram, Radiotelegrafo de Hilos, Telepatia Arcana,...
+                                Informa a tus jugadoras que plataforma usareis para comunicaros durante la partida y cuales son los requerimientos mínimos para jugar. Que usen video, Fantasy Grounds, Roll20, Hangout, Skype, Discord, Telegram, Radiotelegrafo de Hilos, Telepatia Arcana,...
                             </small>
                             {!! Form::text('platform','',['class' => 'form-control']) !!}
                         </div>
@@ -114,6 +114,11 @@ $(document).ready(function() {
                         <div class="form-group">
                             {!! Form::label('beginner_friendly', '¿Partida de iniciación?', ['class' => 'control-label']) !!}
                             Si {!! Form::checkbox('beginner_friendly', 'beginner_friendly') !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('safety_tools', '¿Usa Herramientas de Seguridad?', ['class' => 'control-label']) !!}
+                            Si {!! Form::checkbox('safety_tools', 'safety_tools') !!}
                         </div>
 
                         <div class="form-group">
