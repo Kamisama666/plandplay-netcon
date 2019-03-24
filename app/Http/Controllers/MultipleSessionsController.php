@@ -53,7 +53,7 @@ class MultipleSessionsController extends Controller {
 		for ($i = 2; $i <= $game->sessions_number; $i++) {
 			$childrenGame = new Game();
 
-			$childrenGame->title = $game->title;
+			$childrenGame->title = $game->getOriginal('title');
 			$childrenGame->description = $game->description;
 			$childrenGame->game_system = $game->game_system;
 			$childrenGame->platform = $game->platform;

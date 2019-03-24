@@ -77,6 +77,8 @@
 
                         <p><strong>Partida de iniciación</strong>: {{$game->beginner_friendly ? 'Si' : 'No'}}</p>
 
+                        <p><strong>Usa herramientas de Seguridad</strong>: {{$game->safety_tools ? 'Si' : 'No'}}</p>
+
                         @if ($game->stream_channel)
                         <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
                         @endif

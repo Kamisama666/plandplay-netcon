@@ -118,6 +118,9 @@ $(document).ready(function() {
 
                         <div class="form-group">
                             {!! Form::label('safety_tools', '¿Usa Herramientas de Seguridad?', ['class' => 'control-label']) !!}
+                            <small class="form-text text-muted">
+                                Por ejemplo: Lineas y Velos, Carta X, etc. <a href="https://netconplay.com/guia-de-buenas-practicas/herramientas-en-la-mesa/" target="_blank">Mas info</a>
+                            </small>
                             Si {!! Form::checkbox('safety_tools', 'safety_tools') !!}
                         </div>
 
