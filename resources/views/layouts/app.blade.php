@@ -14,6 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/netcon.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="/libraries/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/libraries/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
     @yield('style')
 </head>
 <body>
@@ -123,6 +126,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="/libraries/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/libraries/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/libraries/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/libraries/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
     @yield('scripts')
 </body>
 </html>

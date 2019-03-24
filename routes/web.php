@@ -19,20 +19,23 @@ Route::get('/home', 'HomeController@index')->middleware(['completed_registration
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::middleware(['auth', 'timezoned'])->group(function() {
-  Route::get('/post-login/new', 'Auth\PostLoginController@create')->name('post_login_post');
-  Route::post('/post-login', 'Auth\PostLoginController@store')->name('post_login_store');
+Route::middleware(['auth', 'timezoned'])->group(function () {
+	Route::get('/post-login/new', 'Auth\PostLoginController@create')->name('post_login_post');
+	Route::post('/post-login', 'Auth\PostLoginController@store')->name('post_login_store');
 });
 
-Route::middleware(['auth', 'completed_registration', 'timezoned'])->group(function() {
-  Route::get('/games/new', 'GamesController@create')->name('game_post');
-  Route::post('/games', 'GamesController@store')->name('game_store');
-  Route::get('/games/success', 'GamesController@success')->name('game_success');
+Route::middleware(['auth', 'completed_registration', 'timezoned'])->group(function () {
+	Route::get('/games/new', 'GamesController@create')->name('game_post');
+	Route::post('/games', 'GamesController@store')->name('game_store');
+	Route::get('/games/success', 'GamesController@success')->name('game_success');
+
+	Route::get('/multiple_sessions/{game}', 'MultipleSessionsController@create')->name('multiple_sessions_post');
+	Route::post('/multiple_sessions/{game}', 'MultipleSessionsController@store')->name('multiple_sessions_store');
 });
 
-Route::middleware(['timezoned'])->group(function() {
-  Route::get('/games', 'GamesController@index')->name('game_list');
-  Route::get('/games/{game}', 'GamesController@show')->name('game_view');
+Route::middleware(['timezoned'])->group(function () {
+	Route::get('/games', 'GamesController@index')->name('game_list');
+	Route::get('/games/{game}', 'GamesController@show')->name('game_view');
 });
 Route::get('/games/{game}/register', 'GamesController@register')->name('game_register');
 Route::get('/games/{game}/register_waitlist', 'GamesController@registerToWaitlist')->name('game_register_waitlist');

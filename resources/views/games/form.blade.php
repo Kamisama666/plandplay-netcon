@@ -1,8 +1,18 @@
 @extends('layouts.app')
 
+@section('scripts')
+ <script>
+$(document).ready(function() {
+    $('.timepicker').datetimepicker({
+        locale: 'es',
+        format: 'DD/MM/YYYY HH:mm',
+        defaultDate: '04/17/2019 07:06'
+    });
+})
+ </script>
+@endsection
+
 @section('content')
-
-
 
 <div class="container">
 
@@ -39,7 +49,7 @@
                             </small>
                             {!! Form::text('title','',['class' => 'form-control']) !!}
                         </div>
-            
+
                         <div class="form-group">
                             {!! Form::label('description', 'Descripcion', ['class' => 'control-label']) !!}
                             <small id="description" class="form-text text-muted">
@@ -57,28 +67,28 @@
                         <div class="form-group">
                             {!! Form::label('platform', 'Plataforma de Juego', ['class' => 'control-label']) !!}
                              <small id="platform" class="form-text text-muted">
-                                Informa a tus jugadoras que plataforma usareis para comunicaros durante la partida Fantasy Grounds, Roll20, Hangout, Skype, Discord, Telegram, Radiotelegrafo de Hilos, Telepatia Arcana,... 
+                                Informa a tus jugadoras que plataforma usareis para comunicaros durante la partida Fantasy Grounds, Roll20, Hangout, Skype, Discord, Telegram, Radiotelegrafo de Hilos, Telepatia Arcana,...
                             </small>
                             {!! Form::text('platform','',['class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group">    
+                        <div class="form-group">
                             {!! Form::label('game_image', 'Imagen de la partida', ['class' => 'control-label']) !!}
                             {!! Form::file('game_image') !!}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('time_preference', 'Preferencia de fecha y Hora', ['class' => 'control-label']) !!}
-                             <small id="time_preference" class="form-text text-muted">
-                               Preferencias y/o disponibilidad para la partida junto con la zona horaria a la que te refieres, por ej.: sabado a las 17:00 GMT+1, cualquier noche o a partir del viernes. Esto nos servirá para ubicar tu partida en la parrilla de juego. Recuerda que las jornadas duran del 28 de Marzo al 1 de Abril.
+                            {!! Form::label('starting_time', 'Fecha y Hora de inicio', ['class' => 'control-label']) !!}
+                             <small id="starting_time" class="form-text text-muted">
+                                Fecha y Hora de inicio para la partida. Asumiremos que la hora corresponde a la zona horaria que has configurado. Recuerda que las jornadas duran del 17 al 21 de Abril. Si la partida va a tener multiples sesiones, esta fecha es solo para la primera.
                             </small>
-                            {!! Form::text('time_preference','',['class' => 'form-control']) !!}
+                            {!! Form::input('datetime-local', 'starting_time', null, ['class' => 'form-control timepicker ']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('duration_hours', 'Número de Horas de duracion', ['class' => 'control-label']) !!}
                              <small id="platform" class="form-text text-muted">
-                               Duración aproximada de la sesión en horas 
+                               Duración aproximada de la sesión en horas
                             </small>
                             {!! Form::number('duration_hours', 1,['class' => 'form-control']) !!}
                         </div>
@@ -106,7 +116,7 @@
                             Si {!! Form::checkbox('beginner_friendly', 'beginner_friendly') !!}
                         </div>
 
-                        <div class="form-group">    
+                        <div class="form-group">
                             {!! Form::label('stream_channel', 'Canal de Emision', ['class' => 'control-label']) !!}
                             <small id="stream_channel" class="form-text text-muted">
                                Si va a ser emitida indicanos la url del canal de emisión
