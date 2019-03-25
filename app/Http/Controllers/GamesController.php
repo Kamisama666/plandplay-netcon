@@ -96,11 +96,22 @@ class GamesController extends Controller {
 
 		$game = new Game();
 
+        $startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time'), $user->timezone);
+        $eventStart = Carbon::createFromFormat('d/m/Y H:i', '17/04/2019 08:00', 'Europe/Madrid');
+        $eventEnd = Carbon::createFromFormat('d/m/Y H:i', '21/04/2019 21:00', 'Europe/Madrid');
+
+        if ($startingTime->isBefore($eventStart) || $startingTime->isAfter($eventEnd)) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+               'starting_time' => ['Debes introducir una hora de inicio entre 17/04/2019 08:00 GMT+1 y 21/04/2019 21:00 GMT+1'],
+            ]);
+            throw $error;
+        }
+
 		$game->title = $request->get('title');
 		$game->description = $request->get('description');
 		$game->game_system = $request->get('game_system');
 		$game->platform = $request->get('platform');
-		$game->starting_time = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time'), $user->timezone);
+		$game->starting_time = $startingTime;
 		$game->duration_hours = $request->get('duration_hours');
 		$game->sessions_number = $request->get('sessions_number');
 		$game->maximum_players_number = $request->get('maximum_players_number');

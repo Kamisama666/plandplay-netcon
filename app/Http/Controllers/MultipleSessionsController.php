@@ -50,6 +50,21 @@ class MultipleSessionsController extends Controller {
 
 		Validator::make($request->all(), $validationRules, $messages)->validate();
 
+        $eventStart = Carbon::createFromFormat('d/m/Y H:i', '17/04/2019 08:00', 'Europe/Madrid');
+        $eventEnd = Carbon::createFromFormat('d/m/Y H:i', '21/04/2019 21:00', 'Europe/Madrid');
+        
+        for ($i = 2; $i <= $game->sessions_number; $i++) {
+            $startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time_' . $i), $user->timezone);
+
+            if ($startingTime->isBefore($eventStart) || $startingTime->isAfter($eventEnd)) {
+                $error = \Illuminate\Validation\ValidationException::withMessages([
+                   'starting_time_' . $i => ['Debes introducir una hora de inicio entre 17/04/2019 08:00 GMT+1 y 21/04/2019 21:00 GMT+1'],
+                ]);
+                throw $error;
+            }
+        }
+
+
 		for ($i = 2; $i <= $game->sessions_number; $i++) {
 			$childrenGame = new Game();
 
