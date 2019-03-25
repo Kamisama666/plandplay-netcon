@@ -96,16 +96,16 @@ class GamesController extends Controller {
 
 		$game = new Game();
 
-        $startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time'), $user->timezone);
-        $eventStart = Carbon::createFromFormat('d/m/Y H:i', '17/04/2019 08:00', 'Europe/Madrid');
-        $eventEnd = Carbon::createFromFormat('d/m/Y H:i', '21/04/2019 21:00', 'Europe/Madrid');
+		$startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time'), $user->timezone);
+		$eventStart = Carbon::createFromFormat('d/m/Y H:i', env('EVENT_START'), env('EVENT_TIMEZONE'));
+		$eventEnd = Carbon::createFromFormat('d/m/Y H:i', env('EVENT_END'), env('EVENT_TIMEZONE'));
 
-        if ($startingTime->isBefore($eventStart) || $startingTime->isAfter($eventEnd)) {
-            $error = \Illuminate\Validation\ValidationException::withMessages([
-               'starting_time' => ['Debes introducir una hora de inicio entre 17/04/2019 08:00 GMT+1 y 21/04/2019 21:00 GMT+1'],
-            ]);
-            throw $error;
-        }
+		if ($startingTime < $eventStart || $eventEnd < $startingTime) {
+			$error = \Illuminate\Validation\ValidationException::withMessages([
+				'starting_time' => ['Debes introducir una hora de inicio entre 17/04/2019 08:00 GMT+1 y 21/04/2019 21:00 GMT+1'],
+			]);
+			throw $error;
+		}
 
 		$game->title = $request->get('title');
 		$game->description = $request->get('description');
@@ -157,9 +157,9 @@ class GamesController extends Controller {
 
 		$registration_open = env('GAME_SIGNUP_ENABLED', false);
 
-        if (!$registration_open && (!$user || !$is_owner)) {
-            abort(404);
-        }
+		if (!$registration_open && (!$user || !$is_owner)) {
+			abort(404);
+		}
 
 		$is_partial = $game->maximum_players_number === 0;
 

@@ -6,7 +6,9 @@ $(document).ready(function() {
     $('.timepicker').datetimepicker({
         locale: 'es',
         format: 'DD/MM/YYYY HH:mm',
-        defaultDate: '04/17/2019 07:06'
+        defaultDate: '04/17/2019 10:00',
+        minDate: '2019-04-17',
+        maxDate: '2019-04-22'
     });
 })
  </script>
@@ -107,7 +109,7 @@ $(document).ready(function() {
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('streamed', '¿Se emitirá la partida?', ['class' => 'control-label']) !!}
+                            {!! Form::label('<strong></strong>eamed', '¿Se emitirá la partida?', ['class' => 'control-label']) !!}
                             Si {!! Form::checkbox('streamed', 'streamed') !!}
                         </div>
 

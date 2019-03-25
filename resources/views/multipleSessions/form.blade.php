@@ -6,6 +6,9 @@ $(document).ready(function() {
     $('.timepicker').datetimepicker({
         locale: 'es',
         format: 'DD/MM/YYYY HH:mm',
+        defaultDate: '04/17/2019 10:00',
+        minDate: '2019-04-17',
+        maxDate: '2019-04-22'
     });
 })
  </script>
@@ -33,7 +36,7 @@ $(document).ready(function() {
 
                     <div class="form-group">
                         {!! Form::label('starting_time_1', 'Fecha y Hora de Inicio Partida 1', ['class' => 'control-label']) !!}
-                        {!! Form::string('starting_time_1', $game->starting_time->format('d/m/Y H:i'), ['class' => 'form-control timepicker ', 'disabled' => 'disabled']) !!}
+                        {!! Form::text('starting_time_1', $game->starting_time->format('d/m/Y H:i'), ['class' => 'form-control timepicker ', 'disabled' => 'disabled']) !!}
                     </div>
 
                     @for ($i = 2; $i <= $game->sessions_number; $i++)
