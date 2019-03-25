@@ -146,6 +146,10 @@ class GamesController extends Controller {
 
 		$registration_open = env('GAME_SIGNUP_ENABLED', false);
 
+        if (!$registration_open && (!$user || !$is_owner)) {
+            abort(404);
+        }
+
 		$is_partial = $game->maximum_players_number === 0;
 
 		$is_full = $game->isFull() && !$is_partial;
