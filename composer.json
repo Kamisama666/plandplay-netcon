@@ -15,7 +15,8 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "spatie/laravel-cookie-consent": "^2.2"
+        "spatie/laravel-cookie-consent": "^2.2",
+        "spatie/laravel-tail": "^3.2"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
