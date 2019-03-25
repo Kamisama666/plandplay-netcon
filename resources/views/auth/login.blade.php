@@ -8,12 +8,12 @@
                 <div class="panel-heading">
                     <h3>BIENVENIDX A NETCONPlay</h3>
                      <p>
-                        <img src="{{ asset('img/logo-netconplay.png') }}">
+                        <img src="{{ asset('img/logotipo-netcon-transparente_AZUL.png') }}">
                     </p>
                 </div>
                 <div class="panel-body">
                      <p>
-                        Bienvenid@ a NETCONPlay, la <strong>plataforma de gestión de partidas de las <a href="http://netconplay.com" title="Visitar netconplay.com" target="_blank">NETCON18</a>.</strong> Para registrar tus partidas o acceder a las que ya has subido solo tienes que loguearte con tu cuenta de Google.
+                        Bienvenid@ a NETCONPlay, la <strong>plataforma de gestión de partidas de las <a href="http://netconplay.com" title="Visitar netconplay.com" target="_blank">NETCON19</a>.</strong> Para registrar tus partidas o acceder a las que ya has subido solo tienes que loguearte con tu cuenta de Google.
                     </p>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
