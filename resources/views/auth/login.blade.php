@@ -13,7 +13,7 @@
                 </div>
                 <div class="panel-body">
                      <p>
-                        Bienvenid@ a NETCONPlay, la <strong>plataforma de gestión de partidas de las <a href="http://netconplay.com" title="Visitar netconplay.com" target="_blank">NETCON19</a>.</strong> Para registrar tus partidas o acceder a las que ya has subido solo tienes que loguearte con tu cuenta de Google.
+                        Bienvenid@ a NETCONPlay, la <strong>plataforma de gestión de partidas de las <a href="http://netconplay.com" title="Visitar netconplay.com" target="_blank">NETCON19</a>.</strong> Para registrar tus partidas o acceder a las que ya has subido solo tienes que loguearte con tu dirección de correo y contraseña.
                     </p>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
