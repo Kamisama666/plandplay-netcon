@@ -32,11 +32,11 @@
                     <br>
 
                     <div class="col-md-10 col-md-offset-1">
-                        <a href="{{route('game_list') . '?date=2018-03-28'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Miercoles</a>
-                        <a href="{{route('game_list') . '?date=2018-03-29'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Jueves</a>
-                        <a href="{{route('game_list') . '?date=2018-03-30'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Viernes</a>
-                        <a href="{{route('game_list') . '?date=2018-03-31'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Sabado</a>
-                        <a href="{{route('game_list') . '?date=2018-04-01'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Domingo</a>
+                        <a href="{{route('game_list') . '?date=2019-04-17'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Miercoles</a>
+                        <a href="{{route('game_list') . '?date=2019-04-18'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Jueves</a>
+                        <a href="{{route('game_list') . '?date=2019-04-19'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Viernes</a>
+                        <a href="{{route('game_list') . '?date=2019-04-20'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Sabado</a>
+                        <a href="{{route('game_list') . '?date=2019-04-21'}}" type="button" class="btn col-md-2 btn-primary center-block" role="button">Domingo</a>
                     </div>
 
                     <table class="table">
