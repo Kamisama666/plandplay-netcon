@@ -51,7 +51,7 @@ class GamesController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		if (!env('GAME_SIGNUP_ENABLED', 'false')) {
+		if (!env('GAME_REGISTRATION_ENABLED', 'false')) {
 			return redirect()->route('home');
 		}
 

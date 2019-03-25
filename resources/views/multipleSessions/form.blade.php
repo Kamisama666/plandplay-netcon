@@ -33,14 +33,14 @@ $(document).ready(function() {
 
                     <div class="form-group">
                         {!! Form::label('starting_time_1', 'Fecha y Hora de Inicio Partida 1', ['class' => 'control-label']) !!}
-                        {!! Form::input('datetime-local', 'starting_time_1', $game->starting_time->format('d/m/Y H:i'), ['class' => 'form-control timepicker ', 'disabled' => 'disabled']) !!}
+                        {!! Form::string('starting_time_1', $game->starting_time->format('d/m/Y H:i'), ['class' => 'form-control timepicker ', 'disabled' => 'disabled']) !!}
                     </div>
 
                     @for ($i = 2; $i <= $game->sessions_number; $i++)
 
                         <div class="form-group">
                             {!! Form::label('starting_time_' . $i, 'Fecha y Hora de Inicio Partida ' . $i, ['class' => 'control-label']) !!}
-                            {!! Form::input('datetime-local', 'starting_time_' . $i, null, ['class' => 'form-control timepicker ']) !!}
+                            {!! Form::text('starting_time_' . $i, null, ['class' => 'form-control timepicker ']) !!}
                         </div>
 
                     @endfor

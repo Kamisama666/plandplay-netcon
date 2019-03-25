@@ -82,7 +82,7 @@ $(document).ready(function() {
                              <small id="starting_time" class="form-text text-muted">
                                 Fecha y Hora de inicio para la partida. Asumiremos que la hora corresponde a la zona horaria que has configurado. Recuerda que las jornadas duran del 17 al 21 de Abril. Si la partida va a tener multiples sesiones, esta fecha es solo para la primera.
                             </small>
-                            {!! Form::input('datetime-local', 'starting_time', null, ['class' => 'form-control timepicker ']) !!}
+                            {!! Form::text('starting_time', null, ['class' => 'form-control timepicker ']) !!}
                         </div>
 
                         <div class="form-group">
