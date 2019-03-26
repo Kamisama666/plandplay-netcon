@@ -157,7 +157,7 @@ class GamesController extends Controller {
 
 		$registration_open = env('GAME_SIGNUP_ENABLED', false);
 
-		if (!$registration_open && (!$user || !$is_owner)) {
+		if (!$game->isApproved() && (!$user || !$is_owner)) {
 			abort(404);
 		}
 
