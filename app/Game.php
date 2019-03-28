@@ -47,6 +47,13 @@ class Game extends Model {
 	}
 
 	/**
+	 * Parent game
+	 */
+	public function parent() {
+		return $this->belongsTo(Game::class, 'parent_id');
+	}
+
+	/**
 	 * Players registered to play in the game
 	 */
 	public function players() {

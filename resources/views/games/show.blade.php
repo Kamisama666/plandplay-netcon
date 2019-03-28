@@ -30,6 +30,13 @@
 
                     <h3>{{$game->title}} {{ $is_full ? '(Completo)' : null }}</h3>
 
+                    <div style="text-align: center;">
+                        @if ($game->isPartial())
+                            <small>Esta sesión es parte de una partida de multiples sesiones. Puedes encontrar <a href="{{route('game_view', ['game' => $game->parent])}}">la primera sesion aquí</a></small>
+                        @endif
+                    </div>
+
+
                     <p style="padding: 15px; ">
                     @if ($game->image_name)
                         <img
@@ -49,7 +56,7 @@
                     </p>
 
                     <div class="col-md-8 col-md-offset-2">
-                        <p><strong>Organizador</strong>: {{$game->owner->name}}</p>
+                        <p><strong>Organizador/a</strong>: {{$game->owner->name}}</p>
                         @if ($is_owner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
@@ -69,9 +76,9 @@
                             }}
                         </p>
 
-                        <p><strong>Numero de Horas de duracion</strong>: {{$game->duration_hours}}</p>
+                        <p><strong>Número de Horas de duración</strong>: {{$game->duration_hours}}</p>
 
-                        <p><strong>Numero de Sesiones</strong>: {{$game->sessions_number}}</p>
+                        <p><strong>Número de Sesiones</strong>: {{$game->sessions_number}}</p>
 
                         <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
 
@@ -82,13 +89,13 @@
                         <p><strong>Aviso de Contenido Sensible</strong>: {{$game->content_warning}}</p>
 
                         @if ($game->stream_channel)
-                        <p><strong>Canal de Emision</strong>: {{$game->stream_channel}}</p>
+                        <p><strong>Canal de Emisión</strong>: {{$game->stream_channel}}</p>
                         @endif
 
-                        <p><strong>Numero Maximo de Jugadores</strong>: {{$game->maximum_players_number}}</p>
+                        <p><strong>Número Maximo de Jugadoras</strong>: {{$game->maximum_players_number}}</p>
 
                         <p>
-                            <strong>Numero de Jugadores Registrados</strong>: {{$game->signedup_players_number}}
+                            <strong>Número de Jugadoras Registradas</strong>: {{$game->signedup_players_number}}
                         </p>
 
                         @if ($is_full)
@@ -105,6 +112,12 @@
                                 <a href="{{route('game_register', ['game' => $game])}}" type="button" class="btn btn-primary center-block" role="button">Registrarse</a>
                             @elseif ($game->canWaitlist($user))
                                 <a href="{{route('game_register_waitlist', ['game' => $game])}}" type="button" class="btn btn-warning center-block" role="button">Apuntarse a la Lista de Espera</a>
+                            @endif
+
+                            @if (!$game->isOwner($user) && $game->isPartial())
+                                <h3 class="text-center text-info">
+                                    Esta es una partida de multiples sesiones. Para registrarte, debes hacerlo en <a href="{{route('game_view', ['game' => $game->parent])}}">la primera sesión</a>.
+                                </h3>
                             @endif
 
                             @if ($is_registered)
@@ -156,7 +169,7 @@
                 </div>
                 @endif
 
-                @if ($game->canReadMessages($user))
+                @if (!$game->isPartial() && $game->canReadMessages($user))
                 <div class="panel-body">
                     <h3>Mensajes</h3>
 
