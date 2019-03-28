@@ -96,7 +96,7 @@ class GamesController extends Controller {
 
 		$game = new Game();
 
-		$startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time'), $user->timezone);
+		$startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time'), $user->timezone)->setTimezone(env('EVENT_TIMEZONE'));
 		$eventStart = Carbon::createFromFormat('d/m/Y H:i', env('EVENT_START'), env('EVENT_TIMEZONE'));
 		$eventEnd = Carbon::createFromFormat('d/m/Y H:i', env('EVENT_END'), env('EVENT_TIMEZONE'));
 

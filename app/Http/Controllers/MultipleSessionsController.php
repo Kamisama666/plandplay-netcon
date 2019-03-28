@@ -54,7 +54,8 @@ class MultipleSessionsController extends Controller {
 		$eventEnd = Carbon::createFromFormat('d/m/Y H:i', env('EVENT_END'), env('EVENT_TIMEZONE'));
 
 		for ($i = 2; $i <= $game->sessions_number; $i++) {
-			$startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time_' . $i), $user->timezone);
+			$startingTime = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time_' . $i), $user->timezone)
+                ->setTimezone(env('EVENT_TIMEZONE'));
 
 			if ($startingTime < $eventStart || $eventEnd < $startingTime) {
 				$error = \Illuminate\Validation\ValidationException::withMessages([
