@@ -73,7 +73,7 @@ class MultipleSessionsController extends Controller {
 			$childrenGame->platform = $game->platform;
 			$childrenGame->starting_time = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time_' . $i), $user->timezone);
 			$childrenGame->duration_hours = $game->duration_hours;
-			$childrenGame->sessions_number = 4;
+			$childrenGame->sessions_number = $game->sessions_number;
 			$childrenGame->maximum_players_number = $game->maximum_players_number;
 			$childrenGame->stream_channel = $game->stream_channel;
 			$childrenGame->streamed = $game->streamed;
