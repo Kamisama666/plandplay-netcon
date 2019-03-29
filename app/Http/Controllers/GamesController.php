@@ -83,8 +83,8 @@ class GamesController extends Controller {
 			'duration_hours' => 'integer|min:1|required',
 			'sessions_number' => 'integer|min:1|required',
 			'maximum_players_number' => 'integer|min:1|required',
-			'stream_channel' => 'string:250|nullable',
-			'content_warning' => 'string:250|nullable',
+			'stream_channel' => 'string|max:250|nullable',
+			'content_warning' => 'string|max:250|nullable',
 		];
 
 		Validator::make($request->all(), $validationRules, $messages)->validate();
