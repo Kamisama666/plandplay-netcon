@@ -31,7 +31,7 @@ class GamesController extends Controller {
 			->orderBy('starting_time', 'asc');
 
 		if ($request->has('date')) {
-			$query->whereDate('starting_time', new Carbon($request->get('date'), env('EVENT_TIMEZONE')));
+			$query->whereDate('starting_time', new Carbon($request->get('date'))->setTimezone(env('EVENT_TIMEZONE')));
 		}
 
 		$games = $query->paginate(10);
