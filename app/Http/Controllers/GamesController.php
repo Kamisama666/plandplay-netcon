@@ -31,7 +31,12 @@ class GamesController extends Controller {
 			->orderBy('starting_time', 'asc');
 
 		if ($request->has('date')) {
-			$query->whereDate('starting_time', new Carbon($request->get('date'))->setTimezone(env('EVENT_TIMEZONE')));
+			$date = new Carbon($request->get('date', env('EVENT_TIMEZONE')));
+			$startOfDate = (new Carbon($date))->startOfDay();
+			$endOfDate = (new Carbon($date))->endOfDay();
+			$query
+				->where('starting_time', '>', $startOfDate->toDateTimeString())
+				->where('starting_time', '<=', $endOfDate->toDateTimeString());
 		}
 
 		$games = $query->paginate(10);
