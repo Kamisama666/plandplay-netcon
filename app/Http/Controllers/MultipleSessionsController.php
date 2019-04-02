@@ -22,7 +22,7 @@ class MultipleSessionsController extends Controller {
 			abort(401, 'La partida no es valida');
 		}
 
-		return view('multipleSessions.form', ['game' => $game]);
+		return view('multipleSessions.form', ['game' => $game, 'user' => $user]);
 	}
 
 	public function store(Request $request, Game $game) {
