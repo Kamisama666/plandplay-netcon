@@ -36,7 +36,7 @@ $(document).ready(function() {
 
                     <div class="form-group">
                         {!! Form::label('starting_time_1', 'Fecha y Hora de Inicio Partida 1', ['class' => 'control-label']) !!}
-                        {!! Form::text('starting_time_1', $game->starting_time->format('d/m/Y H:i'), ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+                        {!! Form::text('starting_time_1', $game->starting_time->setTimezone($user->timezone)->format('d/m/Y H:i'), ['class' => 'form-control', 'disabled' => 'disabled']) !!}
                     </div>
 
                     @for ($i = 2; $i <= $game->sessions_number; $i++)
