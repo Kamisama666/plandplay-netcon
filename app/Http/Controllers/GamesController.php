@@ -35,8 +35,8 @@ class GamesController extends Controller {
 			$startOfDate = (new Carbon($date))->startOfDay();
 			$endOfDate = (new Carbon($date))->endOfDay();
 			$query
-				->where('starting_time', '>', $startOfDate->toDateTimeString())
-				->where('starting_time', '<=', $endOfDate->toDateTimeString());
+				->where('starting_time', '>=', $startOfDate->toDateTimeString())
+				->where('starting_time', '<', $endOfDate->toDateTimeString());
 		}
 
 		$games = $query->paginate(10);
