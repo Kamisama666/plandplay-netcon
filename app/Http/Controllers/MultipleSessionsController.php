@@ -72,7 +72,8 @@ class MultipleSessionsController extends Controller {
 			$childrenGame->description = $game->description;
 			$childrenGame->game_system = $game->game_system;
 			$childrenGame->platform = $game->platform;
-			$childrenGame->starting_time = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time_' . $i), $user->timezone);
+			$childrenGame->starting_time = Carbon::createFromFormat('d/m/Y H:i', $request->get('starting_time_' . $i), $user->timezone)
+                ->setTimezone(env('EVENT_TIMEZONE'));
 			$childrenGame->duration_hours = $game->duration_hours;
 			$childrenGame->sessions_number = $game->sessions_number;
 			$childrenGame->maximum_players_number = $game->maximum_players_number;
