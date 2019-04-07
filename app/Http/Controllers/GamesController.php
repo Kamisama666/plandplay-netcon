@@ -39,6 +39,10 @@ class GamesController extends Controller {
 				->where('starting_time', '<', $endOfDate->toDateTimeString());
 		}
 
+		if ($request->has('owner_id')) {
+			$query->where('owner_id', (int) $request->get('owner_id'));
+		}
+
 		$games = $query->paginate(10);
 
 		$user_timezone = config('app.timezone');

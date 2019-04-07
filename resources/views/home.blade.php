@@ -21,21 +21,21 @@
                     @endif
 
                     <p style="text-align: center;">
-                    Si tienes cualquier duda o comentario ponte en <a href="http://netconplay.com/contacto" target="_blank"> contacto con nosotros</a>
+                    Si tienes cualquier duda o comentario ponte en <a href="http://netconplay.com/contacto" target="_blank"> contacto con la organización</a>
                     </p>
 
                     @if ($user->prices()->count())
                     <h3>Premios Ganados</h3>
 
                     <p>
-                        Para reclamar tus premios, envianos un correo a la direccion <b>netconcerouno@gmail.com</b> con el titulo <b>"Netcon18 Premio"</b>. En el contenido pon el <b>codigo</b> del premio y, si es fisico, <b>la direccion</b> a la que deseas que se te envie.
+                        Para reclamar tus premios, envianos un correo a la dirección <b>netconcerouno@gmail.com</b> con el titulo <b>"Netcon18 Premio"</b>. En el contenido pon el <b>codigo</b> del premio y, si es físico, <b>la dirección</b> a la que deseas que se te envíe.
                     </p>
 
                     <table class="table table-hover table-condensed listado">
                         <thead>
                             <tr>
                                 <th>Premio</th>
-                                <th>Codigo</th>
+                                <th>Código</th>
                             </tr>
                         </thead>
 
@@ -63,7 +63,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Titulo</th>
+                                    <th>Título</th>
                                     <th>Juego</th>
                                     <th>Horario</th>
                                     <th>Estado</th>
@@ -122,7 +122,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Titulo</th>
+                                    <th>Título</th>
                                     <th>Juego</th>
                                     <th>Horario</th>
                                 </tr>

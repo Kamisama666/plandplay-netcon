@@ -56,7 +56,7 @@
                     </p>
 
                     <div class="col-md-8 col-md-offset-2">
-                        <p><strong>Organizador/a</strong>: {{$game->owner->name}}</p>
+                        <p><strong>Organizador/a</strong>: <a href="{{route('game_list') . '?owner_id=' . $game->owner_id}}">{{$game->owner->name}}</a></p>
                         @if ($is_owner)
                             <p><strong>Status</strong>: {{$game->approved ? 'Aprobada' : 'Pendiente de aprobar'}}</p>
                         @endif
