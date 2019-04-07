@@ -85,7 +85,7 @@
                                         <a href="{{route('game_list')}}">Lista de Partidas </a>
                                     </li>
                                     <li>
-                                        <a href="http://www.viruk.com/netconcal/">Calendario de Partidas </a>
+                                        <a href="https://netconplay.com/calendario-de-partidas-2019/">Calendario de Partidas </a>
                                     </li>
 
                                     @if (env('GAME_REGISTRATION_ENABLED', false))
