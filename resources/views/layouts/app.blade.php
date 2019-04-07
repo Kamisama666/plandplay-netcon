@@ -120,7 +120,7 @@
         @yield('content')
 
         <footer>
-            <a href="http://netconplay.com/politica-de-privacidad-de-datos/" target="_blank">Politica de privacidad</a>
+            <a href="http://netconplay.com/politica-de-privacidad-de-datos/" target="_blank">Política de privacidad</a>
         </footer>
     </div>
 

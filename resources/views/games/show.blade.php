@@ -66,7 +66,7 @@
 
                         <p><strong>Plataforma de Juego</strong>: {{$game->platform}}</p>
 
-                        <p><strong>Hora de inicio</strong>:
+                        <p><strong>Hora de Inicio</strong>:
                             {{
                                 $game->starting_time ?
                                 $user_timezone ?
@@ -76,15 +76,15 @@
                             }}
                         </p>
 
-                        <p><strong>Número de Horas de duración</strong>: {{$game->duration_hours}}</p>
+                        <p><strong>Número de Horas de Duración</strong>: {{$game->duration_hours}}</p>
 
                         <p><strong>Número de Sesiones</strong>: {{$game->sessions_number}}</p>
 
                         <p><strong>Emitida</strong>: {{$game->streamed ? 'Si' : 'No'}}</p>
 
-                        <p><strong>Partida de iniciación</strong>: {{$game->beginner_friendly ? 'Si' : 'No'}}</p>
+                        <p><strong>Partida de Iniciación</strong>: {{$game->beginner_friendly ? 'Si' : 'No'}}</p>
 
-                        <p><strong>Usa herramientas de Seguridad</strong>: {{$game->safety_tools ? 'Si' : 'No'}}</p>
+                        <p><strong>Usa Herramientas de Seguridad</strong>: {{$game->safety_tools ? 'Si' : 'No'}}</p>
 
                         <p><strong>Aviso de Contenido Sensible</strong>: {{$game->content_warning}}</p>
 
@@ -92,7 +92,7 @@
                         <p><strong>Canal de Emisión</strong>: {{$game->stream_channel}}</p>
                         @endif
 
-                        <p><strong>Número Maximo de Jugadoras</strong>: {{$game->maximum_players_number}}</p>
+                        <p><strong>Número Máximo de Jugadoras</strong>: {{$game->maximum_players_number}}</p>
 
                         <p>
                             <strong>Número de Jugadoras Registradas</strong>: {{$game->signedup_players_number}}
@@ -101,7 +101,7 @@
                         @if ($is_full)
                             <h3 class="text-center text-info">
                                 <strong>
-                                El juego esta lleno
+                                El juego está lleno
                                 </strong>
                             </h3>
                         @endif

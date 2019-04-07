@@ -31,7 +31,7 @@ class GamesController extends Controller {
 			->orderBy('starting_time', 'asc');
 
 		if ($request->has('date')) {
-			$date = new Carbon($request->get('date', env('EVENT_TIMEZONE')));
+			$date = new Carbon($request->get('date'), env('EVENT_TIMEZONE'));
 			$startOfDate = (new Carbon($date))->startOfDay();
 			$endOfDate = (new Carbon($date))->endOfDay();
 			$query
@@ -51,6 +51,7 @@ class GamesController extends Controller {
 			'user' => $user,
 			'games' => $games,
 			'user_timezone' => $user_timezone,
+			'date' => $request->get('date'),
 		]);
 	}
 
