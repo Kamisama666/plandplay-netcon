@@ -207,7 +207,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Enviar mensage', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Enviar mensaje', ['class' => 'btn btn-primary']) !!}
                         </div>
                     {!! Form::close() !!}
                 </div>

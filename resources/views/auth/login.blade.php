@@ -6,7 +6,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-defaultl" id="panel-login">
                 <div class="panel-heading">
-                    <h3>BIENVENIDX A NETCONPlay</h3>
+                    <h3>BIENVENID@ A NETCONPlay</h3>
                      <p>
                         <img src="{{ asset('img/2019-03-25.png') }}">
                     </p>
@@ -50,7 +50,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recuerdame
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recuérdame
                                     </label>
                                 </div>
                             </div>
