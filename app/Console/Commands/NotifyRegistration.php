@@ -48,7 +48,7 @@ class NotifyRegistration extends Command {
 			$this->error(' The game or user is invalid');
 		}
 
-		event(new PlayerRegistered($waitlisted, $game));
-		event(new WaitlistPlayerRegistered($waitlisted, $game));
+		event(new PlayerRegistered($user, $game));
+		event(new WaitlistPlayerRegistered($user, $game));
 	}
 }
